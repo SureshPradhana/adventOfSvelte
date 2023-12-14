@@ -1,6 +1,7 @@
 <script lang="ts">
     import { onMount } from "svelte";
     import { icons } from "feather-icons";
+    import childrenUrl from '$lib/assets/children.json?url';
     interface Child {
         name: string;
         tally: number;
@@ -23,7 +24,7 @@
     }
 
     onMount(async () => {
-        const response = await fetch("/children.json");
+        const response = await fetch(childrenUrl);
         children = await response.json();
         children = children.map((child) => ({
             ...child,
