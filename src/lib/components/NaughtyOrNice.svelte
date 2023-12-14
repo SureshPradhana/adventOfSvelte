@@ -109,6 +109,7 @@
         <input bind:value={deed} type="text" placeholder="deeds" id="deeds" />
         <button on:click={addNewChild} id="add">add</button>
     </div>
+    <div class="child-wrapper">
     <div class="child details">
         <!--filter  todo-->
         <p>n</p>
@@ -130,7 +131,7 @@
             <p><button on:click={() => del(i)}>delete</button></p>
         </div>
     {/each}
-
+</div>
     <div class=" control details">
         <button on:click={previousPage}>Previous</button>
         <p>{currentPage}</p>
@@ -176,6 +177,10 @@
         padding: 0 1rem;
         
 
+    }
+    .child-wrapper{
+        width:100%;
+        flex:1 0 auto;
     }
     .tool {
         width: 100%;
@@ -244,7 +249,8 @@
     }
     .control {
         gap: 1rem;
-        margin-top:auto;
+        /* margin-top:auto; */
+        /* flex:1 0 auto; */
     }
     
 </style>
