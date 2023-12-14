@@ -1,14 +1,12 @@
 <script>
-    import Header from "$lib/components/Header.svelte";
-    import Footer from "$lib/components/Footer.svelte";
     import Link from "$lib/components/Link.svelte";
 </script>
-<Header/>
+
+<div>
 <main>
  <Link/>   
 </main>
-<Footer/>
-
+</div>
 <style>
     main{
         flex:1 0 auto
