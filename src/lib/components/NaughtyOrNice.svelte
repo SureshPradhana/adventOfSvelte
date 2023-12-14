@@ -10,7 +10,7 @@
     let deed = "";
     let children: Child[] = [];
     let currentPage = 1;
-    const itemsPerPage = 20;
+    const itemsPerPage = 18;
     let naughtiest= {};
     let nicest= {};
 
