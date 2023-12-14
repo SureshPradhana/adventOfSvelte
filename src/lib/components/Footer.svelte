@@ -7,10 +7,10 @@
         <a href="https://github.com/sureshpradhana" target="_blank">
                 {@html icons.github.toSvg({ class: "feather",width: "18px", height: "18px"})}
         </a>
-        <a href="https://twitter.com/sureshpradhana" target="_blank">
+        <a href="https://twitter.com/suresh_pradhana" target="_blank">
                 {@html icons.twitter.toSvg( { class: "feather",width: "18px", height: "18px"})}
         </a>
-        <a href="https://www.linkedin.com/in/sureshpradhana/" target="_blank">
+        <a href="https://www.linkedin.com/in/suresh-pradhana-b322851bb/" target="_blank">
                 {@html icons.linkedin.toSvg( { class: "feather",width: "18px", height: "18px"})}
         </a>
     </div>

@@ -1,5 +1,6 @@
 <script lang="ts">
     import { onMount } from "svelte";
+    import { icons } from "feather-icons";
     interface Child {
         name: string;
         tally: number;
@@ -10,8 +11,8 @@
     let children: Child[] = [];
     let currentPage = 1;
     const itemsPerPage = 15;
-    let naughtiest = {};
-    let nicest = {};
+    let naughtiest= {};
+    let nicest= {};
 
     onMount(async () => {
         const response = await fetch("/children.json");
@@ -60,21 +61,21 @@
             currentPage++;
         }
     }
-    function inc(e) {
+    function inc(e:any) {
         const index =
             e.target.parentElement.parentElement.children[0].innerText - 1;
         children[index].tally++;
         children[index].category =
             children[index].tally > 0 ? "Nice" : "Naughty";
     }
-    function dec(e) {
+    function dec(e:any) {
         const index =
             e.target.parentElement.parentElement.children[0].innerText - 1;
         children[index].tally--;
         children[index].category =
             children[index].tally > 0 ? "Nice" : "Naughty";
     }
-    function del(i) {
+    function del(i:any) {
         console.log("del function called with index:", i);
         children = children.filter(
             (_, index) => index !== i + (currentPage - 1) * itemsPerPage,
@@ -83,7 +84,12 @@
 </script>
 
 <div class="wrapper-for-list">
-    <h2>Naughty or Nice</h2>
+    <div class="title"><h2>Naughty or Nice</h2>
+        <a href="https://github.com/SureshPradhana/adventOfSvelte" target="_blank">
+        {@html icons.github.toSvg( { class: "feather",width: "18px", height: "18px"})}
+    </a></div>
+    
+    
     <div class="tool stats details stats2">
         <p>naughtiest: {naughtiest.name}</p>
         <p>nicest: {nicest.name}</p>
@@ -133,10 +139,43 @@
 </div>
 
 <style>
+    .title{
+        width:100%;
+        display:flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-content: space-around;
+        border-bottom: 1px solid #444444;
+        position: relative;
+        overflow:hidden;
+        line-height: 1;
+    }
+    .title a {
+        /* border-bottom: 1px solid #444444; */
+        line-height: 1;
+        align-self: center;
+        padding:0.5rem;
+    }
     h2 {
         width: 100%;
-        border-bottom: 1px solid #444444;
+        /* border-bottom: 1px solid #444444; */
         padding: 0.5rem;
+        padding-left:2rem;
+    }
+    h2::before {
+        content: "Day 1 ";
+        position:absolute;
+        top:1rem;
+        left:-2rem;
+        font-size: 1rem;
+        transform: rotate(270deg);
+        background-color: white;
+        color:#2e2e2e;
+        /* padding: 0rem 0.4rem; */
+        margin:0 0;
+        padding: 0 1rem;
+        
+
     }
     .tool {
         width: 100%;
