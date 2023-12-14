@@ -244,5 +244,7 @@
     }
     .control {
         gap: 1rem;
+        margin-top:auto;
     }
+    
 </style>
