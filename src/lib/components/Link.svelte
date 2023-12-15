@@ -22,6 +22,7 @@
 
 <style>
     .wrapper-for-list {
+        
         display: flex;
         justify-content: center;
         align-items: center;
@@ -35,17 +36,17 @@
         align-items: center;
         /* gap: 0.5rem; */
         width: 100%;
-        max-width: 500px;
+        /* max-width: 500px; */
     }
 
     .list-item {
         display: grid;
-        grid-template-columns: 3fr 2fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
         flex-direction: row;
         justify-content: center;
         align-items: center;
         gap: 1rem;
-        width: 100%;
+        width: 90%;
         padding: 0.2rem;
         border-bottom: 1px solid var(--stroke);
         /* border-radius: 5px; */

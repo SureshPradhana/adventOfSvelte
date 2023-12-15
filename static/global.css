@@ -48,7 +48,7 @@ html {
 /* using the above variables and the HTML specified above, write CSS to style headings, text, links, images, figures, etc. */
 body {
   font-family: var(--sans);
-  line-height: 1.5;
+  line-height: 1;
   background-color: var(--background);
   color: var(--white);
   margin: 0;
@@ -290,18 +290,15 @@ ul>li {
   border: 1px solid var(--stroke);
 }
 
-.wrapper-for-list {
-  max-width: 1000px;
-  height: 100%;
+/* .wrapper-for-list {
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
   justify-content: center;
   align-items: center;
   border: 1px solid var(--stroke);
   margin: 1rem auto;
   flex: 1 0 auto;
-}
+} */
 
 button {
   outline: none;

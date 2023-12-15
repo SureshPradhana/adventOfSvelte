@@ -1,6 +1,5 @@
 <script lang="ts">
     import { onMount } from "svelte";
-    import { icons } from "feather-icons";
     import childrenUrl from '$lib/assets/children.json?url';
     interface Child {
         name: string;
@@ -79,22 +78,8 @@
         );
     }
 </script>
-
-<div class="wrapper-for-list">
-    <div class="title">
-        <h2>Naughty or Nice</h2>
-        <a
-            href="https://github.com/SureshPradhana/adventOfSvelte"
-            target="_blank"
-        >
-            {@html icons.github.toSvg({
-                class: "feather",
-                width: "18px",
-                height: "18px",
-            })}
-        </a>
-    </div>
-
+<!-- <div> -->
+<div>
     <div class="tool stats details stats2">
         <p>naughtiest: {naughtiest.name}</p>
         <p>nicest: {nicest.name}</p>
@@ -144,46 +129,18 @@
         <button on:click={nextPage}>Next</button>
     </div>
 </div>
-
+<!-- </div> -->
 <style>
-    .title {
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        align-content: space-around;
-        border-bottom: 1px solid #444444;
-        position: relative;
-        overflow: hidden;
-        line-height: 1;
+    .wrapper-for-list{
+        height: 100%;
+        display:grid;
+        grid-template-rows: 50px 1fr;
     }
-    .title a {
-        /* border-bottom: 1px solid #444444; */
-        line-height: 1;
-        align-self: center;
-        padding: 0.5rem;
-    }
-    h2 {
-        width: 100%;
-        padding: 0.5rem;
-        padding-left: 2rem;
-    }
-    h2::before {
-        content: "Day 1 ";
-        position: absolute;
-        top: 1rem;
-        left: -2rem;
-        font-size: 1rem;
-        transform: rotate(270deg);
-        background-color: white;
-        color: #2e2e2e;
-        /* padding: 0rem 0.4rem; */
-        margin: 0 0;
-        padding: 0 1rem;
-    }
+   
     .child-wrapper {
         width: 100%;
         flex: 1 0 auto;
+        
     }
     .tool {
         width: 100%;
