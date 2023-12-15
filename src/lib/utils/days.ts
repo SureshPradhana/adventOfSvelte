@@ -6,45 +6,45 @@ export const data = [
     link: "/day1",
     },
     {
-    title: "Day 2",
+    title: "Merry Munch-o-Meter",
     ref: "day2",
     link: "/day2",
     },
     {
-    title: "Day 3",
+    title: "Jingle Bell Balancer",
     ref: "day3",
     link: "/day3",
     },
     {
-    title: "Day 4",
+    title: "Heart of Christmas",
     ref: "day4",
     link: "/day4",
     },
     {
-    title: "Day 5",
+    title: "Present Progress",
     ref: "day5",
     link: "/day5",
     },
     {
-    title: "Day 6",
+    title: "Misteltoe Metronome",
     ref: "day6",
     link: "/day6",
     },
     {
-    title: "Day 7",
+    title: "Morse mischief",
     ref: "day7",
     link: "/day7",
     },
     {
-    title: "Day 8",
+    title: "Santa's Mysterious Deck of Doubles",
     ref: "day8",
     link: "/day8",
     }, {
-    title: "Day 9",
+    title: "Santa's Final Countdown",
     ref: "day9",
     link: "/day9",
     }, {
-    title: "Day 10",
+    title: "Pop-up! Spreading the holiday cheer",
     ref: "day10",
     link: "/day10",
     }, {
