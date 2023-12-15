@@ -22,7 +22,7 @@
     .wrapper-for-list{
         height:100%;
         display:grid;
-        grid-template-rows: 50px 1fr;
+        grid-template-rows: auto 1fr;
     }
 </style>
 

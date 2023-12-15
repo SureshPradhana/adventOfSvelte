@@ -308,3 +308,15 @@ button {
 input {
   background-color: white;
 }
+
+ button,.btn{
+        padding: 0.2rem 0.5rem;
+        background-color: var(--white);
+        color: #2e2e2e;
+        font-weight: bold;
+    }
+    button:hover ,.btn:hover{
+        background-color: var(--blue);
+        color: var(--white);
+        background-attachment: fixed;
+    }

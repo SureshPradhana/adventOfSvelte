@@ -1,6 +1,6 @@
 <header>
     <img src="/santa-svelte.0521f016.png" alt="Advent Of Svelte Logo" />
-    <h1>Advent Of Svelte 2023</h1>
+    <h1><a href="/">Advent Of Svelte 2023</a></h1>
 </header>
 
 <style>
@@ -21,5 +21,9 @@
 
     header h1 {
         font-size: var(--h5);
+    }
+    header a {
+        text-decoration: none;
+        color: var(--white);
     }
 </style>
