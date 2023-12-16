@@ -2,8 +2,9 @@
     import { onMount } from "svelte";
     import Title from "$lib/components/Title.svelte";
     import Days from  "$lib/components/Days.svelte";
+    import JingleBellBalancer from "./JingleBellBalancer.svelte";
 
-    let title = "Naughty or Nice";
+    let title = "Jingle Bell Balancer";
     let day = "Day 3";
     let githubLink = "https://github.com/SureshPradhana/adventOfSvelte";
 
@@ -12,6 +13,7 @@
 <Days/>
 <div class="wrapper-for-list">
 <Title {title} {day} {githubLink} />
+<JingleBellBalancer/>
 </div>
 <!-- </div> -->
 

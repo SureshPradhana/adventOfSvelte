@@ -1,0 +1,78 @@
+.wrapper-for-list{
+    height: 100%;
+    display:grid;
+    grid-template-rows: 50px 1fr;
+}
+
+.child-wrapper {
+    width: 100%;
+    flex: 1 0 auto;
+    
+}
+.tool {
+    width: 100%;
+}
+.tool > * {
+    margin: 0.5rem;
+}
+.stats > * {
+    display: inline-block;
+    padding: 0;
+    margin: 0.5rem;
+}
+.stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.control {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.details {
+    border-bottom: 1px solid #444444;
+}
+progress {
+    width: 20%;
+    margin: 0;
+    padding: 0;
+}
+
+button,
+.btn {
+    padding: 0.2rem 0.5rem;
+    background-color: var(--white);
+    color: #2e2e2e;
+    font-weight: bold;
+}
+button:hover {
+    background-color: var(--blue);
+    color: var(--white);
+    background-attachment: fixed;
+}
+.child {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr 1.5fr 1fr 1fr 1.8fr;
+}
+.child > * {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-items: center;
+    padding-left: 0.5rem;
+}
+.child > * {
+    border-right: 1px solid #444444;
+    margin: 0;
+}
+input {
+    border: none;
+}
+.control {
+    gap: 1rem;
+}
