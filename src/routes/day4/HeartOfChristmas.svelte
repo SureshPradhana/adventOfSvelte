@@ -147,9 +147,9 @@
             <div class="condition">
                 <div class="condition-text">
                     {#if data[data.length - 1] > 100 || data[data.length - 1] < 60}
-                        <div class="danger">Danger</div>
+                        <div class="danger">abnormal</div>
                     {:else}
-                        <div class="normal">Normal</div>
+                        <div class="normal">normal</div>
                     {/if}
                 </div>
             </div>
