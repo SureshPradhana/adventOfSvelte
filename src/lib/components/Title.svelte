@@ -59,7 +59,7 @@
     h2 {
         width: 100%;
         padding: 0.5rem;
-        padding-left: 2rem;
+        /* padding-left: 2rem; */
     }
    
 </style>
