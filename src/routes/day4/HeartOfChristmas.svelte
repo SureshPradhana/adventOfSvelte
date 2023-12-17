@@ -166,9 +166,11 @@
     svg {
         width: 100%;
         height: 100%;
+        /* overflow: scroll; */
     }
     .monitor {
         margin: 1rem;
+        /* overflow :scroll; */
     }
     #title {
         font-family: Sans-Serif;
@@ -218,8 +220,13 @@
         .main-wrapper {
             grid-template-columns: 1fr;
             grid-template-rows: 1fr auto;
+            grid-template-areas:"one" "two";
+        }
+        .monitor{
+            grid-area:two;
         }
         .vital-signs {
+            grid-area:one;
             overflow: visible;
             grid-area: "div1 div2" "div1 div2";
             grid-template-columns: 1.5fr 1fr;
