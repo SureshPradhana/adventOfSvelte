@@ -76,7 +76,7 @@ export const data = [
     ref: "day17",
     link: "/day17",
     }, {
-    title: "Day 18",
+    title: "Santas quiz",
     ref: "day18",
     link: "/day18",
     }, {

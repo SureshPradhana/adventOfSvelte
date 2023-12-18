@@ -3,12 +3,11 @@
     import { fade } from "svelte/transition";
     import { cubicOut } from "svelte/easing";
 
-    let isLoading = false;
-    let isQuizStarted = false;
-    let data;
-    let i = 0;
-    let message = "";
-    let selectedOption = null;
+    let isLoading:boolean = false;
+    let isQuizStarted :boolean= false;
+    let data:any[] = [];
+    let i :number= 0;
+    let selectedOption:any = null;
 
     onMount(async () => {
         data = await fetchData();
@@ -24,9 +23,9 @@
         }
         return await response.json();
     }
+
     async function loader() {
         isLoading = true;
-        console.log(data);
         isLoading = false;
         isQuizStarted = true;
     }
@@ -35,7 +34,7 @@
         if (isCorrect) {
             setTimeout(() => {
                 i++;
-            }, 1500);
+            }, 1300);
         } else {
         }
     }
@@ -48,12 +47,8 @@
     {#if !isQuizStarted}
         <div class="first">
             <h1>Are you ready for the quiz?</h1>
-            <button on:click={loader}>
-                {#if isLoading}
-                    Loading...
-                {:else}
+            <button on:click={loader}>        
                     Ready
-                {/if}
             </button>
         </div>
     {:else}
@@ -61,7 +56,6 @@
             class="quiz-container"
             transition:fade={{ duration: 1000, easing: cubicOut }}
         >
-            <!-- Quiz goes here -->
             <h1>Quiz</h1>
             <div class="quiz">
                 <div class="question">
@@ -94,7 +88,7 @@
 </div>
 
 <style>
-    @import url("https://fonts.googleapis.com/css2?family=Caveat&family=Mountains+of+Christmas&family=Roboto:wght@100&family=Rubik+Bubbles&display=swap");
+    
     * {
         font-family: "Caveat", "Mountains of Christmas", "Roboto",
             "Rubik Bubbles", sans-serif;
@@ -127,8 +121,6 @@
         gap: 1rem;
     }
     .santa-quiz h1 {
-        font-family: "Caveat", "Mountains of Christmas", "Roboto",
-            "Rubik Bubbles", sans-serif;
         font-size: 3rem;
         font-weight: bolder;
         color: #c8ceae;
@@ -177,7 +169,6 @@
         cursor: pointer;
         transition: all 0.1s ease-in-out;
         text-align: center;
-        /* background-color: rgba(68, 68, 68, 0.5); */
         color: #c8ceae;
         padding: 0.2rem;
     }
@@ -214,7 +205,6 @@
         cursor: pointer;
         transition: all 0.1s ease-in-out;
         text-align: center;
-        /* background-color: rgba(68, 68, 68, 0.5); */
         color: #353535;
         background-color: #dddfdc;
         padding: 0.2rem;
@@ -222,10 +212,6 @@
     }
     .control > button:hover {
         color: chocolate;
-    }
-    .quiz-container > p {
-        font-size: 1.5rem;
-        text-align: center;
     }
     @media (max-width: 600px) {
         .quiz-container {
