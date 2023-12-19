@@ -321,3 +321,210 @@ input {
         color: var(--white);
         background-attachment: fixed;
     }
+
+
+@keyframes glow {
+        0% {
+            opacity: 0.1;
+        }
+        50% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0.1;
+        }
+    }
+
+    @keyframes pulse {
+        0% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.004);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    @keyframes blink {
+        0%,
+        100% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0.3;
+        }
+    }
+
+    @keyframes flicker {
+        0%,
+        100% {
+            opacity: 1;
+        }
+        10%,
+        20%,
+        30%,
+        40%,
+        50%,
+        60%,
+        70%,
+        80%,
+        90% {
+            opacity: 0.1;
+        }
+    }
+
+    /* Steady On */
+@keyframes steadyOn {
+  0%, 100% {
+    opacity: 1;
+  }
+}
+
+/* Chasing Lights */
+@keyframes chasingLights {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(100%);
+  }
+}
+
+/* Blinking */
+@keyframes blinking {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Twinkling */
+@keyframes twinkling {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Color Fade */
+@keyframes colorFade {
+    from {
+    filter: hue-rotate(0deg);
+  }
+  to {
+    background-color: #444444;
+  }
+  
+  
+}
+
+/* Rainbow Fade */
+@keyframes rainbowFade {
+0% {
+    filter: hue-rotate(0deg);
+  }
+  50% {
+    filter: hue-rotate(180deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  } 
+}
+
+/* Sparkle */
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Wave Effect */
+@keyframes waveEffect {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+}
+
+/* Crossfade */
+@keyframes crossfade {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Color Stacking */
+@keyframes colorStacking {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Cascading Lights */
+@keyframes cascadingLights {
+  0%, 100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(0.5);
+  }
+}
+
+/* Firework Effect */
+@keyframes fireworkEffect {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+}
+
+/* Color Chase */
+@keyframes colorChase {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(50px);
+  }
+}
+
+/* Random Flashing */
+@keyframes randomFlashing {
+  0%, 100% {
+    opacity: 1;
+  }
+  25%, 75% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Music Sync */
+@keyframes musicSync {
+  /* Add keyframes for music synchronization */
+  /* You may need to use JavaScript to dynamically adjust properties based on the music beats */
+  0%, 100% {
+    transform: scale(1);
+  }
+}
