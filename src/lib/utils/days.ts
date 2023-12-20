@@ -84,7 +84,7 @@ export const data = [
     ref: "day19",
     link: "/day19",
     }, {
-    title: "Day 20",
+    title: "Jingle Jokes",
     ref: "day20",
     link: "/day20",
     }, {
