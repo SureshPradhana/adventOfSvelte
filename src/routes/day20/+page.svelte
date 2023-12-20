@@ -3,7 +3,7 @@
     import Title from "$lib/components/Title.svelte";
     import Days from "$lib/components/Days.svelte";
     import JingleJokes from "./JingleJokes.svelte";
-    let title = "Naughty or Nice";
+    let title = "Jingle Jokes";
     let day = "Day 20";
     let githubLink = "https://github.com/SureshPradhana/adventOfSvelte";
 </script>
