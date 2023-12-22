@@ -1,7 +1,8 @@
 <script>
-    import {icons} from "feather-icons";
+    import { icons } from "feather-icons";
+    import { onMount } from "svelte";
     let svgEL;
-    let value = "";
+    let value = "snowflake";
     let name_length = 0;
     let characters_used = [];
     let arrangement = [];
@@ -26,7 +27,7 @@
             distance: index * 10,
             length: char.charCodeAt(0) % 10,
         }));
-        console.log(settings)
+        console.log(settings);
         svgdata = buildSnowflake(settings);
         isButtonDisabled = false;
     }
@@ -85,31 +86,35 @@
         link.download = "snowflake.svg";
         link.click();
     }
-
-
+    onMount(() => {
+        generate();
+        return () => {};
+    });
 </script>
 
 <div class="snowflake">
     <div class="center">
         <div class="svg_wrapper">
-            <svg
-                viewBox="0 0 100 100"
-                role="img"
-            >
+            <svg viewBox="0 0 100 100" role="img">
                 <title>A Snowflake</title>
-                <g class="js-canvas" >{@html svgdata}</g>
-
-               
+                <g class="js-canvas">{@html svgdata}</g>
             </svg>
         </div>
         <div class="search">
-            <input bind:value={value} type="text" placeholder="name" />
+            <input bind:value type="text" placeholder="name" />
             <button on:click={() => generate()}>Generate</button>
-            <button on:click={()=> downloadSvg()} class="download_btn" disabled={isButtonDisabled}>
-                {@html icons.download.toSvg( { class: "feather download",width: "18px", height: "18px"})}
+            <button
+                on:click={() => downloadSvg()}
+                class="download_btn"
+                disabled={isButtonDisabled}
+            >
+                {@html icons.download.toSvg({
+                    class: "feather download",
+                    width: "18px",
+                    height: "18px",
+                })}
             </button>
         </div>
-        
     </div>
 </div>
 
@@ -129,11 +134,11 @@
         border: 1px solid #444444;
     }
 
-    svg{
-        width:inherit;
-        height:inherit;
+    svg {
+        width: inherit;
+        height: inherit;
     }
-    
+
     .search {
         width: 100%;
         display: flex;
@@ -141,7 +146,7 @@
         justify-content: space-around;
         align-content: space-around;
     }
-    :global(#branches){
+    :global(#branches) {
         stroke: #fff;
         stroke-width: 1.5px;
         stroke-linecap: round;
@@ -157,29 +162,27 @@
         transform-origin: center;
     }
     :global(.rotated-tree) {
-      
         transform-origin: center;
         rotate: calc(360deg / var(--tree-count) * var(--index));
     }
-    .download_btn{
+    .download_btn {
         background-color: var(--green);
         border: none;
         cursor: pointer;
-        
     }
-    
-    :global(.download){
-        color:#2e2e2e;
+
+    :global(.download) {
+        color: #2e2e2e;
         background-color: transparent;
     }
-    .download_btn:disabled{
+    .download_btn:disabled {
         background-color: #444444;
         cursor: not-allowed;
     }
-    .download_btn:disabled:hover{
+    .download_btn:disabled:hover {
         background-color: #444444;
     }
-    .download_btn:hover{
+    .download_btn:hover {
         background-color: var(--blue);
     }
 
@@ -209,11 +212,4 @@
         }
     }
 
-    /*  Layout Stuff */
-
-    svg {
-        /* aspect-ratio: 1; */
-        /* max-height:95vh;
-  max-width:95vw; */
-    }
 </style>
