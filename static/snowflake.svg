@@ -1,0 +1,84 @@
+<g class="snowflake" style="--tree-count: 5;">
+            <g id="tree">
+    
+    <line x1="50" y1="50" x2="50" y2="-10" class="line" />
+  
+    <g id="branches">
+      <line 
+        x1="50" 
+        y1="50" 
+        x2="45" 
+        y2="45" 
+        class="line"
+      />
+     
+      <line 
+        x1="50" 
+        y1="40" 
+        x2="43" 
+        y2="33" 
+        class="line"
+      />
+     
+      <line 
+        x1="50" 
+        y1="30" 
+        x2="46" 
+        y2="26" 
+        class="line"
+      />
+     
+      <line 
+        x1="50" 
+        y1="20" 
+        x2="49" 
+        y2="19" 
+        class="line"
+      />
+     
+      <line 
+        x1="50" 
+        y1="10" 
+        x2="45" 
+        y2="5" 
+        class="line"
+      />
+     
+      <line 
+        x1="50" 
+        y1="0" 
+        x2="46" 
+        y2="-4" 
+        class="line"
+      />
+    </g>
+    <use href="#branches" class="flipped-branches" />
+  </g>
+      
+      <use 
+        href="#tree" 
+        style="--index: 0" 
+        class="rotated-tree"
+      />
+      <use 
+        href="#tree" 
+        style="--index: 1" 
+        class="rotated-tree"
+      />
+      <use 
+        href="#tree" 
+        style="--index: 2" 
+        class="rotated-tree"
+      />
+      <use 
+        href="#tree" 
+        style="--index: 3" 
+        class="rotated-tree"
+      />
+      <use 
+        href="#tree" 
+        style="--index: 4" 
+        class="rotated-tree"
+      />
+    </g>
+  

@@ -96,7 +96,7 @@ export const data = [
     ref: "day22",
     link: "/day22",
     }, {
-    title: "Day 23",
+    title: "ElfNet Social",
     ref: "day23",
     link: "/day23",
     }, {

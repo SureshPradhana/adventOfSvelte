@@ -58,7 +58,7 @@
     }
     h2 {
         width: 100%;
-        padding: 0.5rem;
+        padding: 0.5rem 0;
         /* padding-left: 2rem; */
     }
    
