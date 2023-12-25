@@ -43,6 +43,7 @@
                 matched: false,
             })),
         );
+        cards.sort(() => Math.random() - 0.5);
         startTime = Date.now();
         startTimer();
     });
