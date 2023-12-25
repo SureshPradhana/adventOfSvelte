@@ -1,18 +1,20 @@
-<script> 
+<script>
     import { icons } from "feather-icons";
     export let title = "Naughty or Nice";
     export let day = "Day 2";
     export let githubLink = "https://github.com/SureshPradhana/adventOfSvelte";
+    let dayElement;
+    $: if (dayElement && dayElement.parentElement) {
+        dayElement.style.width = `${dayElement.parentElement.parentElement.offsetHeight}px`;
+    }
 </script>
+
 <div class="title">
     <div class="day-wrapper">
-    <p class="day">{day}</p>
+        <p bind:this={dayElement} class="day">{day}</p>
     </div>
     <h2>{title}</h2>
-    <a
-        href={githubLink}
-        target="_blank"
-    >
+    <a href={githubLink} target="_blank">
         {@html icons.github.toSvg({
             class: "feather",
             width: "18px",
@@ -22,22 +24,22 @@
 </div>
 
 <style>
-    .day-wrapper{
+    .day-wrapper {
         width: 50px;
         background-color: #2e2e2e;
         color: white;
-        /* border:5px solid green; */
-            transform: rotate(270deg);
-            box-sizing: border-box;
+        transform: rotate(270deg);
+        box-sizing: border-box;
+        height: 50px;
     }
-    .day{
+    .day {
         width: 100%;
-            font-size: 0.8rem;
-            /* transform: rotate(270deg); */
-            background-color: white;
-            color: #2e2e2e;
-            margin: 0 auto;
-            padding: 0 1rem;
+        font-size: 0.8rem;
+        /* transform: rotate(270deg); */
+        background-color: white;
+        color: #2e2e2e;
+        margin: 0 auto;
+        padding: 0 1rem;
     }
     .title {
         width: 100%;
@@ -59,9 +61,10 @@
     h2 {
         width: 100%;
         padding: 0.5rem 0;
-        /* padding-left: 2rem; */
     }
-   
+    @media (max-width: 600px) {
+        h2{
+            font-size: 1.2rem;
+        }
+    }
 </style>
-
-
