@@ -142,7 +142,7 @@
         </div>
         <div class="gridcol">
             <div class="heart-rate">
-                <div class="heart">{data[data.length - 1]} bpm</div>
+                <div class="heart">{data && data.length > 0 ? data[data.length - 1] : 89} bpm</div>
             </div>
             <div class="condition">
                 <div class="condition-text">
