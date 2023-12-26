@@ -97,7 +97,7 @@
         color: #b5acac;
         text-align: center;
         /* margin: 0.5rem; */
-        padding: 0.5rem;
+        padding: 0.8rem;
         text-align: right;
     }
     .countdown-box > div::before {
