@@ -216,7 +216,7 @@
     }
 </script>
 
-<div>
+<div class="present_progress">
     <div>
         <div><h1>Elf Productivity Dashboard</h1></div>
         <div><h2>Stats</h2></div>
@@ -366,9 +366,12 @@
 
 <style>
     @import "$lib/assets/day3.css";
-    /* .pinline >p{
-        display: inline-block;
-    } */
+    .present_progress {
+        /* width:100%; */
+        height:100vh;
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
     .child {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
@@ -414,9 +417,7 @@
         grid-template-columns: repeat(1, 1fr);
         font-size: var(--h5);
     }
-    .child-wrapper {
-        /* grid-gap: 1rem; */
-    }
+
     .child-wrapper > div {
         border: 1px solid #444444;
         grid-template-columns: 1fr 1fr;
@@ -435,5 +436,8 @@
         text-align: center;
         font-size: var(--h5);
         margin: 1rem;
+    }
+    .child-wrapper{
+        width: inherit;
     }
 </style>
