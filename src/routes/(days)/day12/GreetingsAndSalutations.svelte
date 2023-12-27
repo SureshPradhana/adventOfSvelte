@@ -154,9 +154,12 @@
     }
   
     @media (max-width: 600px) {
+        .card{
+            min-height: 250px;
+        }
         .greetings_and_salutations {
-            grid-template-columns: 2fr;
-            grid-template-rows: 0.5fr 1fr;
+            display: flex;
+            flex-direction: column;
         }
     }
 </style>
