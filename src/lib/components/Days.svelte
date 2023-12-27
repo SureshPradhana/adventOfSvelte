@@ -6,7 +6,7 @@
         {#each data as day}
         <!-- <div class=""> -->
            
-                <a href={day.link} target="_blank" class="list-item">{day.ref}</a>
+                <a href={day.link} target="_parent" class="list-item">{day.ref}</a>
         <!-- </div> -->
         {/each}
     </div>
