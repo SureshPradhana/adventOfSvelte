@@ -48,11 +48,11 @@ export const data = [
     ref: "day10",
     link: "/day10",
     }, {
-    title: "Day 11",
+    title: "Elf Name Generator",
     ref: "day11",
     link: "/day11",
     }, {
-    title: "Day 12",
+    title: "Greetings and Salutations",
     ref: "day12",
     link: "/day12",
     }, {
