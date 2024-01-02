@@ -56,7 +56,7 @@ export const data = [
     ref: "day12",
     link: "/day12",
     }, {
-    title: "Day 13",
+    title: "Jingle Bell Balancer 2.0",
     ref: "day13",
     link: "/day13",
     }, {
@@ -72,7 +72,7 @@ export const data = [
     ref: "day16",
     link: "/day16",
     }, {
-    title: "Day 17",
+    title: "Festive Funds",
     ref: "day17",
     link: "/day17",
     }, {
