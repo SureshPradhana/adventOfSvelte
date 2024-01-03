@@ -10,11 +10,11 @@
         price: number;
     }
 
-    let gifts :Gift[] = [];
+    let gifts: Gift[] = [];
     let name: string = "";
     let price: number = 0;
-    let showModal : boolean= false;
-    let modalMessage : string= "";
+    let showModal: boolean = false;
+    let modalMessage: string = "";
 
     function addGift() {
         if (value <= 0) {
@@ -56,36 +56,46 @@
 <main class="festive_funds">
     <Popup show={showModal} message={modalMessage} close={() => closeModal()} />
 
-    <div>
-        <h1>Total Budget for Gifts</h1>
-        <input type="number" bind:value placeholder="Enter your budget" />
-    </div>
-    <div>
-        <p>spent {spent}</p>
-        <p>remaining {remaining}</p>
-    </div>
-    <div>
-        <h1>Gifts</h1>
-        <input type="text" bind:value={name} placeholder="Enter gift name" />
-        <input
-            type="number"
-            bind:value={price}
-            placeholder="Enter gift price"
-            min="0"
-        />
-        <button on:click={() => addGift()}>Add</button>
+    <div class="one">
+        <div>
+            <p>Total Budget <input type="number" bind:value placeholder="Enter your budget" /></p>
+            
+            <p>spent: {spent}</p>
+            <p>remaining: {remaining}</p>
+        </div>
     </div>
 
-    <div>
-        <h1>Gift List</h1>
-        <table>
-            {#each gifts as gift (gift.id)}
+    <div class="two">
+        <div class="two-one">
+            <p>Gift List</p>
+            <table>
                 <tr>
-                    <td>{gift.name}</td>
-                    <td>{gift.price}</td>
+                    <th>Name</th>
+                    <th>Price</th>
                 </tr>
-            {/each}
-        </table>
+                {#each gifts as gift (gift.id)}
+                    <tr>
+                        <td>{gift.name}</td>
+                        <td>{gift.price}</td>
+                    </tr>
+                {/each}
+            </table>
+        </div>
+        <div class="two-two">
+            <p>Add Gift</p>
+            <input
+                type="text"
+                bind:value={name}
+                placeholder="Enter gift name"
+            />
+            <input
+                type="number"
+                bind:value={price}
+                placeholder="Enter gift price"
+                min="0"
+            />
+            <button on:click={() => addGift()}>Add</button>
+        </div>
     </div>
 </main>
 
@@ -93,7 +103,7 @@
     .festive_funds {
         height: 100%;
         display: grid;
-        background-color: red;
+        grid-template-rows: auto 1fr;
     }
     .modal {
         position: fixed;
@@ -107,4 +117,49 @@
         align-items: center;
         color: white;
     }
+    .one div{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .one div p{
+        display: inline-block;
+    }
+    .two {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        grid-gap: 10px;
+    }
+    .two-one {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+    }
+    .two-one table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+    .two-one table tr {
+        text-align: center;
+        border-bottom: 1px solid #444444;
+        
+    }
+    .two-one table tr th {
+        padding: 10px;
+        border-bottom: 1px solid #5b5a5a;
+    }
+    .two-one table tr td {
+        padding: 10px;
+    }
+    .two-two{
+        display: flex;
+        flex-direction: column;
+        justify-content:flex-start;
+        align-items: center;
+        margin: 0 auto;
+        gap:1rem;
+    }
+   
+
 </style>
