@@ -24,4 +24,8 @@
     align-items: center;
     color: white;
 }
+
+.modal p {
+    padding:0.2rem 0.5rem;
+}
 </style>
