@@ -104,6 +104,7 @@
         height: 100%;
         display: grid;
         grid-template-rows: auto 1fr;
+        margin: 0.5rem;
     }
     .modal {
         position: fixed;
@@ -117,6 +118,12 @@
         align-items: center;
         color: white;
     }
+    .one {
+         padding: 0.2rem;
+         border-left: 1px solid #444444;
+            border-right: 1px solid #444444;
+            border-top: 1px solid #444444;
+    }
     .one div{
         display: flex;
         justify-content: space-between;
@@ -129,6 +136,7 @@
         display: grid;
         grid-template-columns: 2fr 1fr;
         grid-gap: 10px;
+        border: 1px solid #444444;
     }
     .two-one {
         display: flex;
@@ -157,9 +165,14 @@
         flex-direction: column;
         justify-content:flex-start;
         align-items: center;
-        margin: 0 auto;
+        /* margin: 0 auto; */
         gap:1rem;
+        border-left: 1px solid #444444;
     }
+    .two-two p{
+     text-align: center;
+    }
+   
    
 
 </style>
