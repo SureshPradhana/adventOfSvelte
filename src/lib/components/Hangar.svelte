@@ -8,6 +8,9 @@
     let searchTerm: string = "";
     let giftData: any = [];
     let foundGift: any = null;
+    let renderer: any = null;
+    let lids:any=[];
+
     let colors = [
         "#e6194b",
         "#3cb44b",
@@ -32,6 +35,7 @@
         "#ffffff",
         "#000000",
     ];
+    let mesh = null;
 
     function fetchGifts() {
         return fetch(
@@ -39,14 +43,12 @@
         )
             .then((response) => response.json())
             .then((data) => {
-                // Update the gifts store with the fetched data
                 giftData = data;
             })
             .catch((error) => console.error("Error:", error));
     }
 
     onMount(async () => {
-        // Fetch the gifts from the URL
         await fetchGifts();
 
         const scene = new THREE.Scene();
@@ -54,27 +56,41 @@
             75,
             window.innerWidth / window.innerHeight,
             0.1,
-            1000,
+            100,
         );
-        const renderer = new THREE.WebGLRenderer();
-        // Create the base geometry and material
-        const baseGeometry = new THREE.PlaneGeometry(20, 20);
+
+        const baseGeometry = new THREE.PlaneGeometry(21, 21);
         const baseMaterial = new THREE.MeshBasicMaterial({
             color: 0x444444,
             side: THREE.DoubleSide,
-        }); // Gray color
-
-        // Create the base mesh and rotate it to be horizontal
+        });
         const base = new THREE.Mesh(baseGeometry, baseMaterial);
         base.rotation.x = -Math.PI / 2;
         scene.add(base);
 
+        let texture = new THREE.TextureLoader().load("./red-background-2.jpeg");
+        texture.colorSpace = THREE.SRGBColorSpace;
+
+        // const box = new THREE.Mesh(boxGeometry, boxMaterial);
+        // scene.add(box);
+
+        const lidGeometry = new THREE.BoxGeometry(0.9, 0.2, 0.9); // Smaller width and depth, greater height
+        const lidMaterial = new THREE.MeshBasicMaterial({
+            map: texture,
+            transparent: true,
+        });
+        const lid = new THREE.Mesh(lidGeometry, lidMaterial);
+        lid.position.y = 0.6; // Position the lid on top of the box
+        // scene.add(lid);
+
+        renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setPixelRatio(window.devicePixelRatio);
         renderer.setSize(container.clientWidth, container.clientHeight);
         container.appendChild(renderer.domElement);
 
         // Create a 20x20 grid
-        const size = 20;
-        const divisions = 20;
+        const size = 21;
+        const divisions = 21;
         const gridHelper = new THREE.GridHelper(size, divisions);
         scene.add(gridHelper);
 
@@ -82,34 +98,48 @@
         camera.position.z = 20;
         camera.position.y = 10;
         camera.lookAt(0, 0, 0);
-        // let gift = giftData[0];
-        // console.log(gift);
-        let heights = {}; // Object to keep track of the height at each grid position
-        let loader = new THREE.TextureLoader();
 
+        let heights = {}; // Object to keep track of the height at each grid position
+        
         for (let gift of giftData) {
-            const geometry = new THREE.BoxGeometry(0.6, 1, 0.8);
-            const color = new THREE.Color(
-                colors[Math.floor(Math.random() * colors.length)],
-            ); // Select a random color from the array
-            const material = new THREE.MeshBasicMaterial({
-                color: color,
+            const boxGeometry = new THREE.BoxGeometry(0.8, 1, 0.8);
+            const boxMaterial = new THREE.MeshBasicMaterial({
+                map: texture,
                 transparent: true,
             });
-
-            const cube = new THREE.Mesh(geometry, material);
+            const cube = new THREE.Mesh(boxGeometry, boxMaterial);
+            const lid = new THREE.Mesh(lidGeometry, lidMaterial);
             cube.name = gift.name; // Store the gift name in the cube
             cubes.push(cube);
-            // Get the current height at the gift's position
+            
+            lids.push(lid)
+
             const key = `${gift.x},${gift.y}`;
             const height = heights[key] || 0;
+            let x=gift.x;
+            let y=gift.y
+            if(gift.x<=10){
+            let remainderx=gift.x;
+            let remaindery=gift.y;
+            x=remainderx-10;
+            y=10-remaindery;
+            }else{
+                x=gift.x-10;
+                y=10-gift.y;
+            }
+           
 
-            cube.position.set(gift.x - 10, height + 0.6, gift.y-10 );
+            cube.position.set(
+                x ,
+                height + 0.6,
+                y ,
+            );
+            lid.position.set(x, height + 1.1, y);
 
-            // Increment the height at the gift's position
             heights[key] = height + 1;
 
             scene.add(cube);
+            scene.add(lid);
         }
 
         let controls = new OrbitControls(camera, renderer.domElement);
@@ -123,25 +153,41 @@
     });
 
     function search() {
+        foundGift = null; // Reset foundGift
+
+
         for (let cube of cubes) {
             if (cube.name === searchTerm) {
                 foundGift = cube;
-                console.log(foundGift.position)
-                cube.material.color.set(0xff0000); // Set color to red
-                cube.material.transparent = false; // Make non-transparent
+                cube.material.transparent = false;
+                cube.material.needsUpdate = true
+                cube.material.opacity = 1;
+                console.log(cube);
             } else {
-                cube.material.color.set(0x808080); // Set color to gray
-                cube.material.transparent = true; // Make transparent
-                cube.material.opacity = 0.1; // Set transparency level
+                cube.material.transparent = true;
+                cube.material.opacity = 0.1;
+                cube.material.map = null;
+                cube.material.needsUpdate = true;
+                
             }
         }
+        
+            lids[0].material.transparent=true;
+            lids[0].material.map=null;
+            lids[0].material.opacity=0.1;
+            lids[0].material.needsUpdate=true;
+        
     }
 </script>
 
 <div bind:this={container} class="hanger-canvas"></div>
 <div class="search">
-    <input bind:value={searchTerm} list="names" placeholder="Search for a gift" />
-   <datalist id="names">
+    <input
+        bind:value={searchTerm}
+        list="names"
+        placeholder="Search for a gift"
+    />
+    <datalist id="names">
         {#each giftData as gift (gift)}
             <option value={gift.name}>{gift.name}</option>
         {/each}
@@ -152,7 +198,10 @@
         <button on:click={() => (searchTerm = "")}>clear</button>
     {/if}
     {#if foundGift}
-        <p>Found {foundGift.name} x:{foundGift.position.x+10} y:{foundGift.position.z+10}</p>
+        <p>
+            Found {foundGift.name} x:{foundGift.position.x + 10} y:{foundGift
+                .position.z + 10}
+        </p>
     {/if}
 </div>
 
@@ -172,7 +221,7 @@
         background-color: transparent;
     }
 
-    .search p{
+    .search p {
         display: inline-block;
         background-color: transparent;
     }
