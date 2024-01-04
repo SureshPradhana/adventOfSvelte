@@ -3,6 +3,7 @@
     import * as THREE from "three";
     import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
     import Popup from "$lib/components/Popup.svelte";
+    import { icons } from "feather-icons";
 
     let container: HTMLDivElement;
     let cubes: any = [];
@@ -50,16 +51,13 @@
         texture.colorSpace = THREE.SRGBColorSpace;
         cubeTexture = texture;
 
-       
-
         const lidGeometry = new THREE.BoxGeometry(0.9, 0.2, 0.9); // Smaller width and depth, greater height
         const lidMaterial = new THREE.MeshBasicMaterial({
             map: texture,
             transparent: true,
         });
         const lid = new THREE.Mesh(lidGeometry, lidMaterial);
-        lid.position.y = 0.6; 
-       
+        lid.position.y = 0.6;
 
         renderer = new THREE.WebGLRenderer({ antialias: true });
         renderer.setPixelRatio(window.devicePixelRatio);
@@ -72,13 +70,11 @@
         const gridHelper = new THREE.GridHelper(size, divisions);
         scene.add(gridHelper);
 
-        
         camera.position.z = 20;
         camera.position.y = 10;
         camera.lookAt(0, 0, 0);
-        
 
-        let heights = {}; 
+        let heights = {};
 
         for (let gift of giftData) {
             const boxGeometry = new THREE.BoxGeometry(0.8, 1, 0.8);
@@ -91,7 +87,7 @@
             cube.name = gift.name;
             (cube as any).giftx = gift.x;
             (cube as any).gifty = gift.y;
-            
+
             cubes.push(cube);
 
             lids.push(lid);
@@ -143,7 +139,7 @@
                 foundGift.push(cube);
                 cube.material.transparent = false;
                 cube.material.needsUpdate = true;
-                cube.material.map=cubeTexture;
+                cube.material.map = cubeTexture;
                 cube.material.opacity = 1;
                 console.log(cube);
                 modalMessage = `Found ${cube.name} at x:${cube.giftx} y:${cube.gifty}`;
@@ -154,7 +150,7 @@
                 cube.material.needsUpdate = true;
             }
         }
-        if(!foundGift){
+        if (foundGift.length === 0 && !showModal) {
             showModal = true;
             modalMessage = `Could not find ${searchTerm}`;
         }
@@ -205,13 +201,15 @@
         <p class="gifts-found">Found</p>
         {#each foundGift as gift (gift)}
             <p class="gifts-found">
-                 {gift.name} x:{gift.giftx} y:{gift.gifty}
+                {gift.name} x:{gift.giftx} y:{gift.gifty}
             </p>
         {/each}
     {/if}
 </div>
 <div>
-    <button on:click={() => refresh()} class="refresh">refresh</button>
+    <button on:click={() => refresh()} class="refresh">
+                {@html icons["refresh-ccw"].toSvg( { class: "feather refresh-day16",width: "18px", height: "14px"})}
+</button>
 </div>
 
 <style>
@@ -234,7 +232,7 @@
         display: inline-block;
         background-color: transparent;
     }
-    
+
     .refresh {
         position: absolute;
         top: 10px;
@@ -242,20 +240,17 @@
         z-index: 1;
     }
 
-     .search input {
-        padding: 0.2rem 0.5rem;
-        font-size: 0.8rem;
-        border: none;
-        box-shadow: 0 0 15px 4px rgba(0,0,0,0.06);
-    }
-
-    .search input:focus {
-        outline: none;
-        box-shadow: 0 0 10px 2px rgba(0,0,0,0.1);
-    }
+   
     .gifts-found {
-        display:block !important;
+        display: block !important;
+        color: white;
+    }
+    :global(.refresh-day16) {
+        color: #2e2e2e;
+        background-color: transparent;
+    }
+    button:hover > :global(.refresh-day16){
+        background-color: transparent;
         color:white;
-        
     }
 </style>
