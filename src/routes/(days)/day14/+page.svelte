@@ -2,8 +2,9 @@
     import { onMount } from "svelte";
     import Title from "$lib/components/Title.svelte";
     import Days from  "$lib/components/Days.svelte";
+    import SnowfallSymphony from "./SnowfallSymphony.svelte";
 
-    let title = "Naughty or Nice";
+    let title = "Snowfall Symphony";
     let day = "Day 14";
     let githubLink = "https://github.com/SureshPradhana/adventOfSvelte";
 
@@ -12,6 +13,7 @@
 <Days/>
 <div class="wrapper-for-list">
 <Title {title} {day} {githubLink} />
+<SnowfallSymphony/>
 </div>
 <!-- </div> -->
 
