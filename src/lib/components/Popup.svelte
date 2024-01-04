@@ -23,6 +23,7 @@
     justify-content: center;
     align-items: center;
     color: white;
+    z-index: 100;
 }
 
 .modal p {

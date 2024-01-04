@@ -1,8 +1,8 @@
 <script lang="ts">
-    import { text } from "d3";
     import { onMount } from "svelte";
     import * as THREE from "three";
     import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
+    import Popup from "$lib/components/Popup.svelte";
 
     let container: HTMLDivElement;
     let cubes: any = [];
@@ -13,30 +13,6 @@
     let lids: any = [];
     let cubeTexture: any = null;
 
-    let colors = [
-        "#e6194b",
-        "#3cb44b",
-        "#ffe119",
-        "#4363d8",
-        "#f58231",
-        "#911eb4",
-        "#46f0f0",
-        "#f032e6",
-        "#bcf60c",
-        "#fabebe",
-        "#008080",
-        "#e6beff",
-        "#9a6324",
-        "#fffac8",
-        "#800000",
-        "#aaffc3",
-        "#808000",
-        "#ffd8b1",
-        "#000075",
-        "#808080",
-        "#ffffff",
-        "#000000",
-    ];
     let mesh = null;
 
     function fetchGifts() {
@@ -74,8 +50,7 @@
         texture.colorSpace = THREE.SRGBColorSpace;
         cubeTexture = texture;
 
-        // const box = new THREE.Mesh(boxGeometry, boxMaterial);
-        // scene.add(box);
+       
 
         const lidGeometry = new THREE.BoxGeometry(0.9, 0.2, 0.9); // Smaller width and depth, greater height
         const lidMaterial = new THREE.MeshBasicMaterial({
@@ -83,8 +58,8 @@
             transparent: true,
         });
         const lid = new THREE.Mesh(lidGeometry, lidMaterial);
-        lid.position.y = 0.6; // Position the lid on top of the box
-        // scene.add(lid);
+        lid.position.y = 0.6; 
+       
 
         renderer = new THREE.WebGLRenderer({ antialias: true });
         renderer.setPixelRatio(window.devicePixelRatio);
@@ -97,13 +72,13 @@
         const gridHelper = new THREE.GridHelper(size, divisions);
         scene.add(gridHelper);
 
-        // Adjust the camera position so the grid can be seen
+        
         camera.position.z = 20;
         camera.position.y = 10;
         camera.lookAt(0, 0, 0);
         
 
-        let heights = {}; // Object to keep track of the height at each grid position
+        let heights = {}; 
 
         for (let gift of giftData) {
             const boxGeometry = new THREE.BoxGeometry(0.8, 1, 0.8);
@@ -113,7 +88,7 @@
             });
             const cube = new THREE.Mesh(boxGeometry, boxMaterial);
             const lid = new THREE.Mesh(lidGeometry, lidMaterial);
-            cube.name = gift.name; // Store the gift name in the cube
+            cube.name = gift.name;
             cubes.push(cube);
 
             lids.push(lid);
@@ -150,8 +125,14 @@
 
         animate();
     });
-
+    let showModal = false;
+    let modalMessage = "";
     function search() {
+        if (!searchTerm) {
+            showModal = true;
+            modalMessage = "Please enter a search term";
+            return;
+        }
         foundGift = null; // Reset foundGift
 
         for (let cube of cubes) {
@@ -162,6 +143,7 @@
                 cube.material.map=cubeTexture;
                 cube.material.opacity = 1;
                 console.log(cube);
+                modalMessage = `Found ${cube.name} at x:${cube.position.x + 10} y:${cube.position.z + 10}`;
             } else {
                 cube.material.transparent = true;
                 cube.material.opacity = 0.1;
@@ -169,14 +151,36 @@
                 cube.material.needsUpdate = true;
             }
         }
+        if(!foundGift){
+            showModal = true;
+            modalMessage = `Could not find ${searchTerm}`;
+        }
 
         lids[0].material.transparent = true;
         lids[0].material.map = null;
         lids[0].material.opacity = 0.1;
         lids[0].material.needsUpdate = true;
     }
+
+    function closeModal() {
+        showModal = false;
+    }
+
+    function refresh() {
+        for (let cube of cubes) {
+            cube.material.transparent = true;
+            cube.material.opacity = 1;
+            cube.material.map = cubeTexture;
+            cube.material.needsUpdate = true;
+        }
+        lids[0].material.transparent = true;
+        lids[0].material.map = cubeTexture;
+        lids[0].material.opacity = 1;
+        lids[0].material.needsUpdate = true;
+    }
 </script>
 
+<Popup show={showModal} message={modalMessage} close={() => closeModal()} />
 <div bind:this={container} class="hanger-canvas"></div>
 <div class="search">
     <input
@@ -201,6 +205,9 @@
         </p>
     {/if}
 </div>
+<div>
+    <button on:click={() => refresh()} class="refresh">refresh</button>
+</div>
 
 <style>
     .hanger-canvas {
@@ -221,5 +228,24 @@
     .search p {
         display: inline-block;
         background-color: transparent;
+    }
+    
+    .refresh {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        z-index: 1;
+    }
+
+     .search input {
+        padding: 0.2rem 0.5rem;
+        font-size: 0.8rem;
+        border: none;
+        box-shadow: 0 0 15px 4px rgba(0,0,0,0.06);
+    }
+
+    .search input:focus {
+        outline: none;
+        box-shadow: 0 0 10px 2px rgba(0,0,0,0.1);
     }
 </style>
