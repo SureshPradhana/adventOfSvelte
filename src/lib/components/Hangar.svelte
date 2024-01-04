@@ -8,7 +8,7 @@
     let cubes: any = [];
     let searchTerm: string = "";
     let giftData: any = [];
-    let foundGift: any = null;
+    let foundGift: any = [];
     let renderer: any = null;
     let lids: any = [];
     let cubeTexture: any = null;
@@ -89,6 +89,9 @@
             const cube = new THREE.Mesh(boxGeometry, boxMaterial);
             const lid = new THREE.Mesh(lidGeometry, lidMaterial);
             cube.name = gift.name;
+            (cube as any).giftx = gift.x;
+            (cube as any).gifty = gift.y;
+            
             cubes.push(cube);
 
             lids.push(lid);
@@ -133,17 +136,17 @@
             modalMessage = "Please enter a search term";
             return;
         }
-        foundGift = null; // Reset foundGift
+        foundGift = []; // Reset foundGift
 
         for (let cube of cubes) {
             if (cube.name === searchTerm) {
-                foundGift = cube;
+                foundGift.push(cube);
                 cube.material.transparent = false;
                 cube.material.needsUpdate = true;
                 cube.material.map=cubeTexture;
                 cube.material.opacity = 1;
                 console.log(cube);
-                modalMessage = `Found ${cube.name} at x:${cube.position.x + 10} y:${cube.position.z + 10}`;
+                modalMessage = `Found ${cube.name} at x:${cube.giftx} y:${cube.gifty}`;
             } else {
                 cube.material.transparent = true;
                 cube.material.opacity = 0.1;
@@ -198,11 +201,13 @@
     {#if searchTerm}
         <button on:click={() => (searchTerm = "")}>clear</button>
     {/if}
-    {#if foundGift}
-        <p>
-            Found {foundGift.name} x:{foundGift.position.x + 10} y:{foundGift
-                .position.z + 10}
-        </p>
+    {#if foundGift.length > 0}
+        <p class="gifts-found">Found</p>
+        {#each foundGift as gift (gift)}
+            <p class="gifts-found">
+                 {gift.name} x:{gift.giftx} y:{gift.gifty}
+            </p>
+        {/each}
     {/if}
 </div>
 <div>
@@ -247,5 +252,10 @@
     .search input:focus {
         outline: none;
         box-shadow: 0 0 10px 2px rgba(0,0,0,0.1);
+    }
+    .gifts-found {
+        display:block !important;
+        color:white;
+        
     }
 </style>
