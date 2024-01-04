@@ -296,15 +296,7 @@ ul>li {
   border: 1px solid var(--stroke);
 }
 
-/* .wrapper-for-list {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid var(--stroke);
-  margin: 1rem auto;
-  flex: 1 0 auto;
-} */
+
 
 button {
   outline: none;
