@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { text } from "d3";
     import { onMount } from "svelte";
     import * as THREE from "three";
     import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
@@ -9,7 +10,8 @@
     let giftData: any = [];
     let foundGift: any = null;
     let renderer: any = null;
-    let lids:any=[];
+    let lids: any = [];
+    let cubeTexture: any = null;
 
     let colors = [
         "#e6194b",
@@ -70,6 +72,7 @@
 
         let texture = new THREE.TextureLoader().load("./red-background-2.jpeg");
         texture.colorSpace = THREE.SRGBColorSpace;
+        cubeTexture = texture;
 
         // const box = new THREE.Mesh(boxGeometry, boxMaterial);
         // scene.add(box);
@@ -98,9 +101,10 @@
         camera.position.z = 20;
         camera.position.y = 10;
         camera.lookAt(0, 0, 0);
+        
 
         let heights = {}; // Object to keep track of the height at each grid position
-        
+
         for (let gift of giftData) {
             const boxGeometry = new THREE.BoxGeometry(0.8, 1, 0.8);
             const boxMaterial = new THREE.MeshBasicMaterial({
@@ -111,29 +115,24 @@
             const lid = new THREE.Mesh(lidGeometry, lidMaterial);
             cube.name = gift.name; // Store the gift name in the cube
             cubes.push(cube);
-            
-            lids.push(lid)
+
+            lids.push(lid);
 
             const key = `${gift.x},${gift.y}`;
             const height = heights[key] || 0;
-            let x=gift.x;
-            let y=gift.y
-            if(gift.x<=10){
-            let remainderx=gift.x;
-            let remaindery=gift.y;
-            x=remainderx-10;
-            y=10-remaindery;
-            }else{
-                x=gift.x-10;
-                y=10-gift.y;
+            let x = gift.x;
+            let y = gift.y;
+            if (gift.x <= 10) {
+                let remainderx = gift.x;
+                let remaindery = gift.y;
+                x = remainderx - 10;
+                y = 10 - remaindery;
+            } else {
+                x = gift.x - 10;
+                y = 10 - gift.y;
             }
-           
 
-            cube.position.set(
-                x ,
-                height + 0.6,
-                y ,
-            );
+            cube.position.set(x, height + 0.6, y);
             lid.position.set(x, height + 1.1, y);
 
             heights[key] = height + 1;
@@ -155,12 +154,12 @@
     function search() {
         foundGift = null; // Reset foundGift
 
-
         for (let cube of cubes) {
             if (cube.name === searchTerm) {
                 foundGift = cube;
                 cube.material.transparent = false;
-                cube.material.needsUpdate = true
+                cube.material.needsUpdate = true;
+                cube.material.map=cubeTexture;
                 cube.material.opacity = 1;
                 console.log(cube);
             } else {
@@ -168,15 +167,13 @@
                 cube.material.opacity = 0.1;
                 cube.material.map = null;
                 cube.material.needsUpdate = true;
-                
             }
         }
-        
-            lids[0].material.transparent=true;
-            lids[0].material.map=null;
-            lids[0].material.opacity=0.1;
-            lids[0].material.needsUpdate=true;
-        
+
+        lids[0].material.transparent = true;
+        lids[0].material.map = null;
+        lids[0].material.opacity = 0.1;
+        lids[0].material.needsUpdate = true;
     }
 </script>
 
