@@ -170,15 +170,7 @@
         info.addEventListener("pointermove", onPointerMove);
     }
 
-    function onWindowResize() {
-        windowHalfX = window.innerWidth / 2;
-        windowHalfY = window.innerHeight / 2;
-
-        camera.aspect = window.innerWidth / window.innerHeight;
-        camera.updateProjectionMatrix();
-
-        renderer.setSize(window.innerWidth, window.innerHeight);
-    }
+  
 
     function onPointerMove(event) {
         if (event.isPrimary === false) return;
@@ -230,7 +222,7 @@
 
 <div>
     <div id="info" bind:this={info}>
-        
+
     </div>
     <div>
 

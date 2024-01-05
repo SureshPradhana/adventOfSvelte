@@ -60,15 +60,15 @@ export const data = [
     ref: "day13",
     link: "/day13",
     }, {
-    title: "Day 14",
+    title: "Snowfall Symphony",
     ref: "day14",
     link: "/day14",
     }, {
-    title: "Day 15",
+    title: "Sparkling Snowglobes",
     ref: "day15",
     link: "/day15",
     }, {
-    title: "Day 16",
+    title: "Lessons from Amazon",
     ref: "day16",
     link: "/day16",
     }, {
