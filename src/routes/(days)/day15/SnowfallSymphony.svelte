@@ -10,7 +10,6 @@
     let windowHalfY = 0;
     let canvasinfo;
     let svginfo;
-
     let camera, scene, renderer, parameters,scene2;
     let mouseX = 0,
         mouseY = 0;
@@ -31,7 +30,7 @@
                 role="img"
                 ><title>A Snowflake</title><g class="js-canvas"
                     >${generate(value[i])}</g></svg>`;
-            svginfo.innerHTML += data;
+          
 
             const pngDataUrl = await convertSvgToPng(data);
              const assignSRGB = (texture) => {
@@ -40,7 +39,7 @@
             console.log(pngDataUrl);
             const texture = textureLoader.load(pngDataUrl, assignSRGB);
             
-            canvasinfo.innerHTML += `<img src="${pngDataUrl}" />`;
+         
             snowflakesarray.push(texture);
         }
         snowflakesarray = [...snowflakesarray];
@@ -231,17 +230,9 @@
 
 <div>
     <div id="info" bind:this={info}>
-        <a href="https://threejs.org" target="_blank" rel="noopener">three.js</a
-        >
-        - webgl particle sprites example<br />
-        snowflakes by
-        <a
-            href="http://en.wikipedia.org/wiki/File:Sketch_of_snow_crystal_by_Ren%C3%A9_Descartes.jpg"
-            >Ren&eacute; Descartes</a
-        >
+        
     </div>
     <div>
-        <div bind:this={canvasinfo}></div>
-        <div bind:this={svginfo}></div>
+
     </div>
 </div>
