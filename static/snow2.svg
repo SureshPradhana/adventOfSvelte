@@ -1,0 +1,31 @@
+<svg width="50px" height="50px" viewBox="0 0 100 100" role="img">
+<title>A Snowflake</title>
+<g class="js-canvas">
+<g class="snowflake" style="--tree-count: 9;">
+<g id="tree">
+<line x1="50" y1="50" x2="50" y2="-40" class="line" style="stroke: #fff; stroke-width: 1px; stroke-linecap: round;"/>
+<g id="branches" style="stroke: #fff; stroke-width: 1px; stroke-linecap: round;">
+<line x1="50" y1="50" x2="45" y2="45" class="line" style="stroke: #fff; stroke-width: 1px; stroke-linecap: round;"/>
+<line x1="50" y1="40" x2="50" y2="40" class="line" style="stroke: #fff; stroke-width: 1px; stroke-linecap: round;"/>
+<line x1="50" y1="30" x2="49" y2="29" class="line" style="stroke: #fff; stroke-width: 1px; stroke-linecap: round;"/>
+<line x1="50" y1="20" x2="41" y2="11" class="line" style="stroke: #fff; stroke-width: 1px; stroke-linecap: round;"/>
+<line x1="50" y1="10" x2="48" y2="8" class="line" style="stroke: #fff; stroke-width: 1px; stroke-linecap: round;"/>
+<line x1="50" y1="0" x2="42" y2="-8" class="line" style="stroke: #fff; stroke-width: 1px; stroke-linecap: round;"/>
+<line x1="50" y1="-10" x2="43" y2="-17" class="line" style="stroke: #fff; stroke-width: 1px; stroke-linecap: round;"/>
+<line x1="50" y1="-20" x2="43" y2="-27" class="line" style="stroke: #fff; stroke-width: 1px; stroke-linecap: round;"/>
+<line x1="50" y1="-30" x2="49" y2="-31" class="line" style="stroke: #fff; stroke-width: 1px; stroke-linecap: round;"/>
+</g>
+<use href="#branches" class="flipped-branches" style="scale: -1 1; transform-origin: center;"/>
+</g>
+<use href="#tree" style="--index: 0; transform-origin: center; rotate: calc(360deg / var(--tree-count) * var(--index));" class="rotated-tree"/>
+<use href="#tree" style="--index: 1; transform-origin: center; rotate: calc(360deg / var(--tree-count) * var(--index));" class="rotated-tree"/>
+<use href="#tree" style="--index: 2; transform-origin: center; rotate: calc(360deg / var(--tree-count) * var(--index));" class="rotated-tree"/>
+<use href="#tree" style="--index: 3; transform-origin: center; rotate: calc(360deg / var(--tree-count) * var(--index));" class="rotated-tree"/>
+<use href="#tree" style="--index: 4; transform-origin: center; rotate: calc(360deg / var(--tree-count) * var(--index));" class="rotated-tree"/>
+<use href="#tree" style="--index: 5; transform-origin: center; rotate: calc(360deg / var(--tree-count) * var(--index));" class="rotated-tree"/>
+<use href="#tree" style="--index: 6; transform-origin: center; rotate: calc(360deg / var(--tree-count) * var(--index));" class="rotated-tree"/>
+<use href="#tree" style="--index: 7; transform-origin: center; rotate: calc(360deg / var(--tree-count) * var(--index));" class="rotated-tree"/>
+<use href="#tree" style="--index: 8; transform-origin: center; rotate: calc(360deg / var(--tree-count) * var(--index));" class="rotated-tree"/>
+</g>
+</g>
+</svg>

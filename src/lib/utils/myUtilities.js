@@ -18,7 +18,7 @@ export function generate(value) {
 function buildSnowflake({ trunkLength, branches, treeCount }) {
     return `<g class="snowflake" style="--tree-count: ${treeCount};">
             ${buildTree({ trunkLength, branches })}
-      ${buildTreeCopies(treeCount)}
+      ${buildTreeCopies({treeCount,trunkLength, branches})}
     </g>
   `;
 }
@@ -39,26 +39,34 @@ function buildTree({ trunkLength, branches }) {
         class="line"
          style="stroke: #fff; stroke-width: 1px; stroke-linecap: round;"
       />
+      <line 
+        x1="50" 
+        y1="${startY}" 
+        x2="${50 + length}" 
+        y2="${startY - length}" 
+        class="line flipped-branches"
+         style="stroke: #fff; stroke-width: 1px; stroke-linecap: round;"
+      />
     `;
     });
     return `<g id="tree">
     ${trunk}
     <g id="branches" style="stroke: #fff; stroke-width: 1px; stroke-linecap: round;">${branchStrings.join(" ")}</g>
-    <use href="#branches" class="flipped-branches" style="scale: -1 1; transform-origin: center;"/>
   </g>`;
 }
 
-function buildTreeCopies(treeCount) {
+function buildTreeCopies({treeCount,trunkLength, branches}) {
+    console.log(treeCount);
+    console.log(trunkLength);
+    console.log(branches);
     let copies = "";
-    for (let i = 0; i < treeCount; i++) {
-        copies += `
-      <use 
-        href="#tree" 
-        style="--index: ${i}; transform-origin: center; rotate: calc(360deg / var(--tree-count) * var(--index));" 
-        class="rotated-tree"
-      />`;
+   for (let i = 0; i < treeCount; i++) {
+        const rotation = (360 / treeCount) * i;
+        const tree = buildTree({ trunkLength, branches });
+        copies += `<g transform="rotate(${rotation} 50 50)">${tree}</g>`;
     }
     return copies;
+   
 }
 
 function downloadSvg() {

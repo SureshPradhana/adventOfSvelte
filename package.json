@@ -26,10 +26,13 @@
 		"@neodrag/svelte": "^2.0.3",
 		"@sureshpradhana/christmas-popup": "^0.0.4",
 		"canvas-confetti": "^1.9.2",
+		"canvg": "^4.0.1",
+		"convert-svg-to-png": "^0.6.4",
 		"d3": "^7.8.5",
 		"dotenv": "^16.3.1",
 		"feather-icons": "^4.29.1",
 		"leaflet": "^1.9.4",
+		"save-svg-as-png": "^1.4.17",
 		"svelte-canvas-confetti": "^0.6.0",
 		"svelte-maplibre": "^0.7.4",
 		"three": "^0.160.0"
