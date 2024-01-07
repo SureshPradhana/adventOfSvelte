@@ -149,23 +149,32 @@
         console.log("space");
     }
 
-    function playMorse() {
-        let totalTime = 0;
+    let currentCharIndex = -1;
 
-        for (let i = 0; i < morse.length; i++) {
-            console.log(morse[i]);
-            if (morse[i] === "•") {
-                setTimeout(playDot, totalTime);
-            } else if (morse[i] === "—") {
-                setTimeout(playDash, totalTime);
-            } else if (morse[i] === "/") {
-                setTimeout(playSpace, totalTime);
-            }
-            totalTime += 300; // Adjust this value as needed
+function playMorse() {
+    let totalTime = 0;
+
+    for (let i = 0; i < morse.length; i++) {
+        if (morse[i] === "•") {
+            setTimeout(() => {
+                currentCharIndex = i;
+                playDot();
+            }, totalTime);
+        } else if (morse[i] === "—") {
+            setTimeout(() => {
+                currentCharIndex = i;
+                playDash();
+            }, totalTime);
+        } else if (morse[i] === "/") {
+            setTimeout(() => {
+                currentCharIndex = i;
+                playSpace();
+            }, totalTime);
         }
+        totalTime += 300; // Adjust this value as needed
     }
-
-    function morsefy(text: string): string {
+}   
+ function morsefy(text: string): string {
         console.log("morseee");
         let morse = "";
         for (let i = 0; i < text.length; i++) {
@@ -179,7 +188,14 @@
 
 <div class="morse-mischief">
     <div class="morse-continer">
-        <div class="morse-mischief__preview typewriter"><p>{morse}</p></div>
+        <div class="morse-mischief__preview typewriter">
+            <p>
+            {#each morse.split('') as char, i}
+            <span class={i === currentCharIndex ? 'greeno' : ''}>{char}</span>
+        {/each}
+        </p>
+    </div>
+
         <div class="morse-mischief__morse">
             <input type="text" bind:value class="morse-mischief__input" />
             <button on:click={playMorse}>play</button>
@@ -188,8 +204,8 @@
 </div>
 
 <style>
-    :global(.orange) {
-        color: #ff8c00;
+    :global(.greeno) {
+        color: var(--green);
     }
     .morse-mischief {
         width: 100%;
