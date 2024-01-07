@@ -171,19 +171,6 @@
         for (let i = 0; i < text.length; i++) {
             let morsec = morsefyChar(text[i].toLowerCase());
 
-            let time = 0;
-            for (let j = 0; j < morsec.length; j++) {
-                console.log(morsec[j]);
-                if (morsec[j] === "•") {
-                    setTimeout(playDot, time);
-                } else if (morsec[j] === "—") {
-                    setTimeout(playDash, time);
-                } else if (morsec[j] === "/") {
-                    setTimeout(playDash, time);
-                }
-                time += 300;
-            }
-
             morse += morsec + " ";
         }
         return morse;
@@ -232,6 +219,12 @@
         font-family: monospace;
         text-align: center;
         word-wrap: break-word;
+    }
+    .morse-mischief__morse {
+        width: 100%;
+        max-width: 100%;
+        min-width: 100%;
+        display: flex;
     }
     .morse-mischief__preview {
         background-color: transparent;
