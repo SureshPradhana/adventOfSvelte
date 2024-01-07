@@ -132,8 +132,7 @@ function morsefy(text:string,o:any):string {
   align-items: center;
 }
 .morse-continer {
-  width: 800px;
-  max-width: 100%;
+  max-width: 800px;
   height: 400px;
   display: flex;
   flex-direction: column;
@@ -141,7 +140,7 @@ function morsefy(text:string,o:any):string {
 
 }
 input{
-    width: 100%;
+    width:inherit;
     height: 100%;
     font-size: 2rem;
     background-color: transparent;
