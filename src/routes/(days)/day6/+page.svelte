@@ -1,19 +1,19 @@
 <script lang="ts">
-    import { onMount } from "svelte";
     import Title from "$lib/components/Title.svelte";
     import Days from  "$lib/components/Days.svelte";
+    import MisteltoeMetronome from "./MisteltoeMetronome.svelte";
 
-    let title = "Naughty or Nice";
+    let title = "Misteltoe Metronome";
     let day = "Day 6";
     let githubLink = "https://github.com/SureshPradhana/adventOfSvelte";
 
 </script>
-<!-- <div> -->
+
 <Days/>
 <div class="wrapper-for-list">
 <Title {title} {day} {githubLink} />
+<MisteltoeMetronome/>
 </div>
-<!-- </div> -->
 
 <style>
     .wrapper-for-list{
