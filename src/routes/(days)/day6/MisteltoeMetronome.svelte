@@ -99,6 +99,10 @@
         outline: none; /* Remove the default focus outline */
         background-color: transparent;
     }
+    .clickable:active
+    ,.clickable:focus {
+    outline: none;
+}
     .clickable > * {
         pointer-events: none;
         user-select: none;
