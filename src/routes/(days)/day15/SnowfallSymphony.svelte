@@ -144,27 +144,17 @@
 
         renderer = new THREE.WebGLRenderer();
         renderer.setPixelRatio(window.devicePixelRatio);
-        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setSize(info.clientWidth, window.innerHeight);
         info.appendChild(renderer.domElement);
 
         //
 
         //
 
-        const gui = new GUI();
 
         const params = {
             texture: true,
         };
-
-        gui.add(params, "texture").onChange(function (value) {
-            for (let i = 0; i < materials.length; i++) {
-                materials[i].map = value === true ? parameters[i][1] : null;
-                materials[i].needsUpdate = true;
-            }
-        });
-
-        gui.open();
 
         info.style.touchAction = "none";
         info.addEventListener("pointermove", onPointerMove);
@@ -228,3 +218,7 @@
 
     </div>
 </div>
+
+<style>
+
+</style>

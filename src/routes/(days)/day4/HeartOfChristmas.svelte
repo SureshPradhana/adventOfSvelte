@@ -219,8 +219,6 @@
       @media (max-width: 768px) {
         .main-wrapper {
             grid-template-columns: 1fr;
-            grid-template-rows: 1fr auto;
-            grid-template-areas:"one" "two";
         }
         .monitor{
             grid-area:two;

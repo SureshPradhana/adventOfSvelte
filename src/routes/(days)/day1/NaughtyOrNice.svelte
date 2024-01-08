@@ -1,6 +1,7 @@
 <script lang="ts">
     import { onMount } from "svelte";
     import childrenUrl from '$lib/assets/children.json?url';
+    import {icons} from "feather-icons";
     interface Child {
         name: string;
         tally: number;
@@ -108,7 +109,10 @@
             <p>deeds</p>
             <p>+</p>
             <p>-</p>
-            <p>delete</p>
+            <p>
+
+{@html icons.trash.toSvg( { class: "feather day1",width: "18px", height: "18px"})}
+            </p>
         </div>
         {#each children.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage) as child, i (child)}
             {@const index = i + 1 + (currentPage - 1) * itemsPerPage - 1}
@@ -119,7 +123,10 @@
                 <p>{child.tally}</p>
                 <p><button on:click={() => inc(index)}>+</button></p>
                 <p><button on:click={() => dec(index)}>-</button></p>
-                <p><button on:click={() => del(index)}>delete</button></p>
+                <p><button on:click={() => del(index)}>
+{@html icons.trash.toSvg( { class: "feather day1",width: "18px", height: "18px"})}
+
+                </button></p>
             </div>
         {/each}
     </div>
@@ -155,7 +162,7 @@
     }
     .stats {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        grid-template-columns: repeat(5, auto);
         justify-content: center;
         align-items: center;
         flex-wrap: wrap;
@@ -208,5 +215,9 @@
     }
     .control {
         gap: 1rem;
+    }
+    :global(.day1) {
+        background-color: transparent;
+        fill: none;
     }
 </style>
