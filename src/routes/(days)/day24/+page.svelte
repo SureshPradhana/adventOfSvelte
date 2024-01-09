@@ -1,5 +1,6 @@
 <script lang="ts">
     import { onMount } from "svelte";
+    export let data;
     import Title from "$lib/components/Title.svelte";
     import Days from  "$lib/components/Days.svelte";
     import SantasMagicalTracker from "./SantasMagicalTracker.svelte";
@@ -12,7 +13,7 @@
 <Days/>
 <div class="wrapper-for-list">
 <Title {title} {day} {githubLink} />
-<SantasMagicalTracker/>
+<SantasMagicalTracker {data}/>
 </div>
 <!-- </div> -->
 
