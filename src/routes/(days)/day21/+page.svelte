@@ -2,6 +2,7 @@
     import Title from "$lib/components/Title.svelte";
     import OhWeather from "./OhWeather.svelte";
     import Days from  "$lib/components/Days.svelte";
+    export let data;
 
     let title = "Oh the weather outside is frightful";
     let day = "Day 21";
@@ -12,7 +13,7 @@
 <Days/>
 <div class="wrapper-for-list">
 <Title {title} {day} {githubLink} />
-<OhWeather/>
+<OhWeather {data}/>
 </div>
 <!-- </div> -->
 

@@ -2,8 +2,9 @@
     import { MapLibre } from "svelte-maplibre";
     import maplibregl from "maplibre-gl";
     import { onMount } from "svelte";
+    export let data;
 
-    const API_KEY = import.meta.env.VITE_YOUR_SECRET;
+    const API_KEY =data.PUBLIC_SECRET_KEY;
 
     let wmo_code = {
         "0": "Clear sky",
