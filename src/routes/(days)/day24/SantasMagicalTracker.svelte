@@ -11,7 +11,7 @@
   onMount(async () => {
     map = new maplibregl.Map({
       container: "map",
-      style: "https://api.maptiler.com/maps/streets/style.json?key=" + data.MAPLIBRE_API,
+      style: "https://api.maptiler.com/maps/streets/style.json?key=" + data.PUBLIC_MAPLIBRE_API,
       center: [-103.59179687498357, 40.66995747013945],
       zoom: 3,
     });
