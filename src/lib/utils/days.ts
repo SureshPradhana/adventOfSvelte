@@ -100,7 +100,7 @@ export const data = [
     ref: "day23",
     link: "/day23",
     }, {
-    title: "Day 24",
+    title: "Santa's Magical Tracker",
     ref: "day24",
     link: "/day24",
     }

@@ -1,109 +1,154 @@
-<script lang="ts">
-  // import { MapLibre, Marker, Line } from "svelte-maplibre";
-  import { MapLibre, Marker, LineLayer,Popup } from "svelte-maplibre";
-  import { onMount, onDestroy } from "svelte";
+<script context="module">
   import maplibregl from "maplibre-gl";
-  import { LngLat } from "maplibre-gl";
-    import type { Popup } from "svelte-maplibre";
-  let data;
-  let newarr = [];
-  let markerLocations: LngLat[] = [];
-  let initialView:LngLat = [];
-  let fetchTimeout; // = setTimeout(fetchData, 8 * 1000);
-  // let latitude;
-  // let longitude;
-  $: center = initialView;
-  let styleURL =
-    "https://basemaps.cartocdn.com/gl/positron-gl-style/style.json";
-  let zoom = 1;
+</script>
 
-  async function fetchData() {
+<script>
+  import { onMount, onDestroy } from "svelte";
+  let map;
+  let citiesData = [];
+
+  onMount(async () => {
+    map = new maplibregl.Map({
+      container: "map",
+      style:
+        "https://api.maptiler.com/maps/streets/style.json?key=get_your_own_OpIi9ZULNHzrESv6T2vL",
+      center: [-103.59179687498357, 40.66995747013945],
+      zoom: 3,
+    });
+
     try {
-      let response = await fetch(
+      const response = await fetch(
         "https://advent.sveltesociety.dev/data/2023/day-twenty-four.json",
-      );
+      ); // Replace with your API endpoint
+      citiesData = await response.json();
+      console.log(citiesData);
 
-      if (response.ok) {
-         data = await response.json();
-         newarr = [];
-        data.history.forEach((entry) => {
-          newarr.push([entry.location.lng, entry.location.lat]);
+      map.on("load", () => {
+        // Add a new source from our GeoJSON data
+        map.addSource("cities", {
+          type: "geojson",
+          data: {
+            type: "FeatureCollection",
+            features: citiesData.history.map((item, index) => ({
+              type: "Feature",
+              geometry: {
+                type: "Point",
+                coordinates: [item.location.lng, item.location.lat],
+              },
+              properties: { ...item, index },
+            })),
+          },
         });
-        if (data.current) {
-          initialView = [data.current.location.lng, data.current.location.lat];
-        } else {
-          initialView = [
-            data.history[data.history.length - 1].location.lng,
-            data.history[data.history.length - 1].location.lat,
-          ];
-        }
 
-        markerLocations = [...newarr];
-   
-        console.log(markerLocations);
-        console.log(initialView);
+        map.addLayer({
+          id: "unclustered-point",
+          type: "circle",
+          source: "cities",
+          paint: {
+            "circle-color": "#11b4da",
+            "circle-radius": 8,
+            "circle-stroke-width": 1,
+            "circle-stroke-color": "#fff",
+          },
+        });
+        map.addLayer({
+          id: "point-index",
+          type: "symbol",
+          source: "cities",
+          layout: {
+            "text-field": ["get", "index"], // Use the 'index' property of each feature
+            "text-size": 12,
+          },
+          paint: {
+            "text-color": "#000",
+          },
+        });
 
-        fetchTimeout = setTimeout(fetchData, 8 * 1000);
-      } else {
-        console.error("Failed to fetch data");
-      }
+        map.on("click", "unclustered-point", (e) => {
+          const feature = e.features[0];
+          const { coordinates } = feature.geometry;
+
+          new maplibregl.Popup({ anchor: "top" })
+            .setLngLat(coordinates)
+            .setHTML(
+              `Arrived: ${new Date(
+                feature.properties.arrival,
+              ).toLocaleString()}<br>Departure: ${new Date(
+                feature.properties.departure,
+              ).toLocaleString()}<br>City: ${
+                feature.properties.city
+              }<br>Region: ${feature.properties.region}<br>Population: ${
+                feature.properties.population
+              }<br>Presents Delivered: ${
+                feature.properties.presentsDelivered
+              } `,
+            )
+            .addTo(map);
+        });
+      });
     } catch (error) {
       console.error("Error fetching data:", error);
     }
-  }
 
-  onMount(() => {
-    fetchData();
+    // Cleanup map on component destroy
+    onDestroy(() => {
+      map.remove();
+    });
   });
-
-  onDestroy(() => {
-    clearTimeout(fetchTimeout);
-  });
-
-  function handleMapLoad({ detail: map }) {
-    const marker = new maplibregl.Marker()
-      .setLngLat(initialView)
-      .setPopup(new maplibregl.Popup().setHTML(`Temperature: 30c`))
-      .addTo(map);
-  }
 </script>
 
-
-<div class="smt">
-  <div class="map-wrapper">
-    <MapLibre
-      center={center}
-      zoom={1}
-      class="map"
-      standardControls
-      style="https://basemaps.cartocdn.com/gl/positron-gl-style/style.json"
-      on:load={handleMapLoad}
-    >
-      {#if markerLocations}
-      <Marker lngLat={new LngLat(177.477371, 64.736656)}  ></Marker>  
-      
-      {/if}
-    </MapLibre>
-
-   
-  </div>
+<div class="magical-tracker">
+  <div id="map"></div>
 </div>
 
 <style>
-  .smt {
-    height: 100%;
+  .magical-tracker {
     width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
   }
-  .map-wrapper {
-    height: 100%;
+  #map {
     width: 100%;
-  }
-  :global(.map) {
     height: 100%;
-    width: 100%;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    z-index: 1;
   }
-  :global(.map-wrapper *) {
-    background-color: transparent;
-    color: #2e2e2e;
+
+  :global(.maplibregl-popup) {
+    position: absolute !important;
+    top: 0 !important;
+    background-color: transparent !important;
+    max-width: fit-content !important;
+  }
+  :global(.maplibregl-control-container) {
+    position: absolute !important;
+    top: 0 !important;
+    background-color: transparent !important;
+  }
+  :global(.maplibregl-popup-content) {
+    background-color: #444444;
+    color: #fff;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+  }
+  :global(.maplibregl-popup-content > button) {
+    background-color: #fff;
+    color: #444444;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    outline: none;
+    width: fit-content;
+    height: 100%;
+    margin: 0 auto;
   }
 </style>

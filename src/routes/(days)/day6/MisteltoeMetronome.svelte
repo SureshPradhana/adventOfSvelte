@@ -101,7 +101,7 @@
     }
     .clickable:active
     ,.clickable:focus {
-    outline: none;
+    outline: none:q;
 }
     .clickable > * {
         pointer-events: none;

@@ -1,6 +1,6 @@
 <script lang="ts">
     import { onMount } from "svelte";
-    let value: string = "Helllo World";
+    let value: string = "Hello World";
     let morse: string = "";
     let audioContext: any;
     let gainNode: any;
