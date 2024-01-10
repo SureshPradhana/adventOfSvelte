@@ -203,6 +203,7 @@
                 on:click={() => geoFindByName()}
                 type="submit"
                 value="Search"
+                class="search_button"
             />
             <br />
         </div>
@@ -265,8 +266,17 @@
     .search_by_name {
         display: flex;
         flex-direction: row;
-        justify-content: center;
+        /* justify-content: center; */
         align-items: center;
+    }
+    .search_by_name > .search_button {
+        margin: 0.4rem;
+        cursor: pointer;
+
+    }
+    .search_by_name > .search_button:hover {
+        background-color: var(--blue);
+        color: white;
     }
 
     .daily_data {
