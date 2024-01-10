@@ -120,9 +120,9 @@
     }
     .one {
          padding: 0.2rem;
-         border-left: 1px solid #444444;
-            border-right: 1px solid #444444;
-            border-top: 1px solid #444444;
+         border-left: 1px solid var(--stroke);
+            border-right: 1px solid var(--stroke);
+            border-top: 1px solid var(--stroke);
     }
     .one div{
         display: flex;
@@ -136,7 +136,7 @@
         display: grid;
         grid-template-columns: 2fr 1fr;
         grid-gap: 10px;
-        border: 1px solid #444444;
+        border: 1px solid var(--stroke);
     }
     .two-one {
         display: flex;
@@ -150,7 +150,7 @@
     }
     .two-one table tr {
         text-align: center;
-        border-bottom: 1px solid #444444;
+        border-bottom: 1px solid var(--stroke);
         
     }
     .two-one table tr th {
@@ -167,7 +167,7 @@
         align-items: center;
         /* margin: 0 auto; */
         gap:1rem;
-        border-left: 1px solid #444444;
+        border-left: 1px solid var(--stroke);
     }
     .two-two p{
      text-align: center;

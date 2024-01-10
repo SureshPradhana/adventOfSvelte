@@ -208,7 +208,7 @@
 </div>
 <div>
     <button on:click={() => refresh()} class="refresh">
-                {@html icons["refresh-ccw"].toSvg( { class: "feather refresh-day16",width: "18px", height: "14px"})}
+                {@html icons["refresh-ccw"].toSvg( { class: "feather btn-transparent",width: "18px", height: "14px"})}
 </button>
 </div>
 
@@ -245,12 +245,6 @@
         display: block !important;
         color: white;
     }
-    :global(.refresh-day16) {
-        color: #2e2e2e;
-        background-color: transparent;
-    }
-    button:hover > :global(.refresh-day16){
-        background-color: transparent;
-        color:white;
-    }
+   
+   
 </style>

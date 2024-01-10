@@ -136,7 +136,7 @@
         top: 0.5rem;
         right: 0.5rem;
         background-color: #fff;
-        color: #2e2e2e;
+        color: var(--black);
         padding: 0.5rem;
         font-size: 0.8rem;
         cursor: pointer;

@@ -176,7 +176,7 @@
 <style>
     * {
         background-color: transparent;
-        color: #2e2e2e;
+        color: var(--black);
     }
     html,
     body {
@@ -195,7 +195,7 @@
     }
     .elfheader {
         height: 40px;
-        background-color: #444444;
+        background-color: var(--stroke);
     }
     .elfbody {
         height: 100vh;
@@ -248,7 +248,7 @@
     .right > div {
         height: 50px;
         background-color: #d31010;
-        border: 1px solid #444444;
+        border: 1px solid var(--stroke);
     }
     button {
         cursor: pointer;
@@ -264,12 +264,12 @@
         margin-right: 10px;
     }
     .post {
-        /* border: 1px solid #444444; */
+        /* border: 1px solid var(--stroke); */
         margin: 5px;
         padding: 5px;
     }
     .comments {
-        border: 1px solid #444444;
+        border: 1px solid var(--stroke);
         padding: 10px;
         margin-left: 20px;
     }
@@ -288,12 +288,12 @@
         color: #d57235;
     }
     .post-header {
-        border: 1px solid #444444;
+        border: 1px solid var(--stroke);
         margin: 0.4rem;
         padding: 0.4rem;
         display: flex;
         flex-direction: column;
-        background-color: #444444;
+        background-color: var(--stroke);
     }
     .comments {
         background-color: #3e3e3ec3;
@@ -313,7 +313,7 @@
     .author-info > .timestamp,
     .comment > .timestamp {
         font-size: 0.6rem;
-        color: #444444;
+        color: var(--stroke);
         justify-content: end;
     }
     h4 {
@@ -332,6 +332,6 @@
         font-size: 0.8rem;
     }
     .comment-header {
-        border-bottom: 1px solid #444444;
+        border-bottom: 1px solid var(--stroke);
     }
 </style>

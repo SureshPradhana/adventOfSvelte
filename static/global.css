@@ -17,6 +17,7 @@
   --background: #2E2E2E;
   --stroke: #444444;
   --accent: #FF6F61;
+  --black: #2e2e2e;
 
   /* fonts */
   --decorative: "monospace", "Montserrat", sans-serif;
@@ -48,7 +49,6 @@ html {
 *:before,
 *:after {
   box-sizing: inherit;
-  background-color: var(--background);
 }
 
 /* using the above variables and the HTML specified above, write CSS to style headings, text, links, images, figures, etc. */
@@ -157,6 +157,18 @@ header h1 {
   background-color: var(--blue);
 }
 
+.txt-red {
+  color: red;
+}
+
+.txt-green {
+  color: var(--green);
+}
+
+.txt-yellow {
+  color: yellow;
+}
+
 .preview h1 {
   font-size: 1.5rem;
 }
@@ -197,6 +209,20 @@ header h1 {
   list-style-type: disc;
 }
 
+.img-30 {
+  width: 30px;
+  height: 30px;
+  margin: 0.2rem;
+}
+
+.active {
+  background-color: var(--blue);
+  color: #fff;
+}
+
+svg {
+  background-color: transparent;
+}
 
 /* Basic styling for code blocks */
 pre {
@@ -289,14 +315,10 @@ ul>li {
 
 /* styling for lists */
 
-
-
 .main-container {
   width: 100%;
   border: 1px solid var(--stroke);
 }
-
-
 
 button {
   outline: none;
@@ -332,6 +354,16 @@ input {
 input:focus {
   outline: none;
   box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.1);
+}
+
+.btn-transparent {
+  background-color: transparent;
+  color: var(--black);
+}
+
+.btn-transparent:hover {
+  background-color: transparent;
+  color: var(--white);
 }
 
 @keyframes glow {
@@ -449,7 +481,7 @@ input:focus {
   }
 
   to {
-    background-color: #444444;
+    background-color: var(--stroke);
   }
 
 

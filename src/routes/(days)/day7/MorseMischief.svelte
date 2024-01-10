@@ -191,7 +191,7 @@ function playMorse() {
         <div class="morse-mischief__preview typewriter">
             <p>
             {#each morse.split('') as char, i}
-            <span class={i === currentCharIndex ? 'greeno' : ''}>{char}</span>
+            <span class={i === currentCharIndex ? 'txt-green' : ''}>{char}</span>
         {/each}
         </p>
     </div>
@@ -204,9 +204,7 @@ function playMorse() {
 </div>
 
 <style>
-    :global(.greeno) {
-        color: var(--green);
-    }
+   
     .morse-mischief {
         width: 100%;
         height: 100%;
@@ -260,7 +258,7 @@ function playMorse() {
     button {
         border: none;
         outline: none;
-        color: #2e2e2e;
+        color: var(--black);
         font-size: 2rem;
         font-family: monospace;
         cursor: pointer;

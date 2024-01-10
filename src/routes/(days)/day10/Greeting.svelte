@@ -66,7 +66,7 @@
     .popup {
         width: 40%;
         height: auto;
-        background-color: #444444;
+        background-color: var(--stroke);
         position: absolute;
         top: 50%;
         left: 50%;

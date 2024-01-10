@@ -44,7 +44,7 @@
                 disabled={isButtonDisabled}
             >
                 {@html icons.download.toSvg({
-                    class: "feather download",
+                    class: "feather btn-transparent download",
                     width: "18px",
                     height: "18px",
                 })}
@@ -66,7 +66,7 @@
     .svg_wrapper {
         width: 100%;
         height: 100%;
-        border: 1px solid #444444;
+        border: 1px solid var(--stroke);
     }
 
     svg {
@@ -87,16 +87,13 @@
         cursor: pointer;
     }
 
-    :global(.download) {
-        color: #2e2e2e;
-        background-color: transparent;
-    }
+  
     .download_btn:disabled {
-        background-color: #444444;
+        background-color: var(--stroke);
         cursor: not-allowed;
     }
     .download_btn:disabled:hover {
-        background-color: #444444;
+        background-color: var(--stroke);
     }
     .download_btn:hover {
         background-color: var(--blue);

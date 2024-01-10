@@ -95,9 +95,6 @@
         align-items: center;
         margin: 0.2rem;
     }
-    :global(svg) {
-        background-color: transparent;
-    }
     @keyframes snowfall {
         0% {
             transform: translateY(-100px);

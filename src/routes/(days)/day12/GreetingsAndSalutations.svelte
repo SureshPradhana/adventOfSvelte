@@ -97,7 +97,7 @@
         padding: 0.5rem;
     }
     .card {
-        border: 1px solid #444444;
+        border: 1px solid var(--stroke);
         box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
         padding: 1rem;
     }
@@ -106,7 +106,7 @@
     }
     .controls {
         height: 100%;
-        background-color: #444444;
+        background-color: var(--stroke);
         box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.1);
         padding: 1rem;
         display: grid;

@@ -23,9 +23,9 @@
     
     a{
         padding: 0 0.2rem;
-        border: 1px solid #2e2e2e;
+        border: 1px solid var(--black);
         background-color: var(--white);
-        color: #2e2e2e;
+        color: var(--black);
         font-weight: bold;
         font-size: 0.8rem;
         /* line-height: 1rem; */

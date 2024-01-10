@@ -26,7 +26,7 @@
 <style>
     .day-wrapper {
         width: 50px;
-        background-color: #2e2e2e;
+        background-color: var(--black);
         color: white;
         transform: rotate(270deg);
         box-sizing: border-box;
@@ -37,7 +37,7 @@
         font-size: 0.8rem;
         /* transform: rotate(270deg); */
         background-color: white;
-        color: #2e2e2e;
+        color: var(--black);
         margin: 0 auto;
         padding: 0 1rem;
     }
@@ -47,7 +47,7 @@
         flex-direction: row;
         justify-content: space-around;
         align-content: space-around;
-        border-bottom: 1px solid #444444;
+        border-bottom: 1px solid var(--stroke);
         position: relative;
         overflow: hidden;
         line-height: 1;

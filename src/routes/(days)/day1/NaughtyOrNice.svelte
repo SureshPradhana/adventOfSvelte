@@ -124,7 +124,7 @@
                 <p><button on:click={() => inc(index)}>+</button></p>
                 <p><button on:click={() => dec(index)}>-</button></p>
                 <p><button on:click={() => del(index)}>
-{@html icons.trash.toSvg( { class: "feather day1",width: "18px", height: "18px"})}
+{@html icons.trash.toSvg( { class: "feather btn-transparent",width: "18px", height: "18px"})}
 
                 </button></p>
             </div>
@@ -173,7 +173,7 @@
         align-items: center;
     }
     .details {
-        border-bottom: 1px solid #444444;
+        border-bottom: 1px solid var(--stroke);
     }
     progress {
         width: 20%;
@@ -185,7 +185,7 @@
     .btn {
         padding: 0.2rem 0.5rem;
         background-color: var(--white);
-        color: #2e2e2e;
+        color: var(--black);
         font-weight: bold;
     }
     button:hover {
@@ -207,7 +207,7 @@
         padding-left: 0.5rem;
     }
     .child > * {
-        border-right: 1px solid #444444;
+        border-right: 1px solid var(--stroke);
         margin: 0;
     }
     input {
@@ -216,8 +216,5 @@
     .control {
         gap: 1rem;
     }
-    :global(.day1) {
-        background-color: transparent;
-        fill: none;
-    }
+    
 </style>

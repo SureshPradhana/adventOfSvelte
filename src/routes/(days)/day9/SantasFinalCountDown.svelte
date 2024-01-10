@@ -162,7 +162,7 @@
         color: #ffffff;
     }
     .theme-button:hover {
-        background: #444444;
+        background: var(--stroke);
     }
     .theme-dark {
         font-family:  monospace;

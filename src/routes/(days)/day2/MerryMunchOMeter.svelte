@@ -8,7 +8,7 @@
         if (progress < 100) {
             progress += 1;
         }
-        imgstr.push('<img class="image" src="./cookie.0e187f81.png" alt="Your Image">');
+        imgstr.push('<img class="image img-30" src="./cookie.0e187f81.png" alt="Your Image">');
         imgstr=imgstr;
 
     }
@@ -89,11 +89,7 @@ function resetProgress() {
     .cookies{
         
     }
-     :global(img) {
-        width:30px;
-        height:30px;
-        margin:0.2rem;
-      }
+    
    
     .tools{
         height:100%;

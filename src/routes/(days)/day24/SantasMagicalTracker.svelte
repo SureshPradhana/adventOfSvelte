@@ -131,7 +131,7 @@
     background-color: transparent !important;
   }
   :global(.maplibregl-popup-content) {
-    background-color: #444444;
+    background-color: var(--stroke);
     color: #fff;
     padding: 0.5rem;
     border-radius: 0.5rem;
@@ -141,7 +141,7 @@
   }
   :global(.maplibregl-popup-content > button) {
     background-color: #fff;
-    color: #444444;
+    color: var(--stroke);
     border: none;
     border-radius: 0.5rem;
     padding: 0.5rem 1rem;

@@ -4,7 +4,7 @@
     import Days from  "$lib/components/Days.svelte";
     import JingleBellBalancer from "../day13/JingleBellBalancer.svelte";
 
-    let title = "Naughty or Nice";
+    let title = "Jingle Bell Balancer 2.0";
     let day = "Day 13";
     let githubLink = "https://github.com/SureshPradhana/adventOfSvelte";
 

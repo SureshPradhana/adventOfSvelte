@@ -20,12 +20,12 @@
         "#ffffff",
     ]; // Initial colors copy
     let colors2 = [
-        "#444444",
-        "#444444",
-        "#444444",
-        "#444444",
-        "#444444",
-        "#444444",
+        "var(--stroke)",
+        "var(--stroke)",
+        "var(--stroke)",
+        "var(--stroke)",
+        "var(--stroke)",
+        "var(--stroke)",
     ]; //when power turned off
 
     let directions = ["normal", "reverse", "alternate", "alternate-reverse"];
@@ -107,7 +107,6 @@
         const pathElements = svgElement.querySelectorAll("path.bulb");
         colors = colors1;
         pathElements.forEach((el, index) => {
-            // el.style.fill = "yellow"; // replace 'yourColor' with the color you want
             el.style.animationPlayState = "running";
             switch (selectedPattern) {
                 case "alternate":
@@ -466,7 +465,7 @@
         <div class="controls">
             <div class="info">
                 {@html icons.info.toSvg({
-                    class: "feather yellow",
+                    class: "feather txt-yellow",
                     width: "18px",
                     height: "18px",
                 })}use desktop for better experience
@@ -542,7 +541,7 @@
         <div class="power-div">
             <button on:click={() => (isButtonActive = !isButtonActive)}>
                 {@html icons.power.toSvg({
-                    class: "feather power",
+                    class: "feather txt-green",
                     width: "18px",
                     height: "18px",
                 })}
@@ -551,11 +550,11 @@
         <div class="sensor">
             <div class="sensor-in">
                 {@html icons.circle.toSvg({
-                    class: "feather circle",
+                    class: "feather btn-transparent",
                     width: "18px",
                     height: "18px",
                     fill: isButtonActive ? "green" : "red",
-                    // color: "#444444",
+                    // color: "var(--stroke)",
                 })}
                 {isButtonActive ? "on" : "off"}
             </div>
@@ -678,9 +677,7 @@
         font-size: 0.5rem;
         /* font-weight: bold; */
     }
-    :global(.circle) {
-        color: transparent;
-    }
+
     .controls .info {
         text-align: center;
         padding: 1rem;
@@ -725,9 +722,6 @@
     button:hover {
         color: var(--green);
     }
-    :global(.feather) {
-        color: var(--green);
-    }
     .tools {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
@@ -768,7 +762,7 @@
         height: 100%;
         display: grid;
         grid-template-rows: 1fr auto;
-        border-right: 1px solid #444444;
+        border-right: 1px solid var(--stroke);
     }
     .color-picker input[type="color"] {
         width: 60px;
@@ -783,7 +777,7 @@
     select {
         padding: 0.2rem;
         font-size: 1em;
-        border: 1px solid #444444;
+        border: 1px solid var(--stroke);
         /* border-radius: 5px; */
         background-color: transparent;
         color: white;
@@ -798,7 +792,7 @@
         justify-content: space-between;
     }
     .tools {
-        border: 1px solid #444444;
+        border: 1px solid var(--stroke);
         margin: 0;
         padding: 2rem;
     }
@@ -854,9 +848,7 @@
         width: 400px;
         height: 100%;
     }
-    :global(.yellow) {
-        color: yellow;
-    }
+   
     .tools > div {
         /* margin:1rem; */
         padding: 0.2rem;
@@ -875,10 +867,7 @@
         margin: 0.2rem;
         /* padding:0.5rem; */
     }
-    :global(.power) {
-        background-color: transparent;
-        color: rgb(243, 237, 237);
-    }
+
     .tools > div > button:hover {
         background-color: var(--green);
         color: white;

@@ -237,9 +237,7 @@
 </div>
 
 <style>
-    :global(.map) {
-        height: 500px;
-    }
+   
     .oh_weather {
         width: 100%;
         display: grid;
@@ -295,12 +293,15 @@
     }
     .daily_data_item > * {
         background-color: transparent;
-        color: #2e2e2e;
+        color: var(--black);
     }
     .daily_data_item {
         background-color: white;
         cursor: pointer;
         padding: 0.2rem;
+    }
+    :global(.map) {
+        height: 500px;
     }
     :global(.maplibregl-ctrl-icon) {
         background-color: white;
@@ -308,7 +309,7 @@
     }
     :global(.map, .map * > *) {
         background-color: white;
-        color: #2e2e2e;
+        color: var(--black);
     }
     .daily_data_item:hover {
         background-color: #f1f1f1;

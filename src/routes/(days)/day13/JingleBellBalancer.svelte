@@ -227,7 +227,7 @@
                             </div>
                             <div class="btn" on:click={deletetour(i)}>
                                 {@html icons.trash.toSvg({
-                                    class: "feather",
+                                    class: "feather btn-transparent",
                                     width: "18px",
                                     height: "18px",
                                 })}
@@ -246,13 +246,13 @@
                         <progress max="100" value={weight}></progress>
                         {#if weight >= 100}
                             {@html icons.layers.toSvg({
-                                class: "feather red",
+                                class: "feather txt-red",
                                 width: "18px",
                                 height: "18px",
                             })}
                         {:else}
                             {@html icons.shield.toSvg({
-                                class: "feather greenc",
+                                class: "feather txt-green",
                                 width: "18px",
                                 height: "18px",
                             })}
@@ -322,7 +322,7 @@
         width: 100%;
         height: 100%;
         /* background-color: #fff; */
-        border: 1px solid #000;
+        border: 1px solid var(--stroke);
     }
 
     .child {
@@ -346,12 +346,7 @@
         align-items: center;
         flex-wrap: wrap;
     }
-    :global(.btn > .feather) {
-        width: 18px;
-        height: 18px;
-        color: #000;
-        background-color: transparent;
-    }
+   
     .stats3 {
         grid-template-columns: 1fr 1fr 1fr;
     }
@@ -365,16 +360,8 @@
     .stats4 {
         grid-template-columns: 1fr 1fr 1fr 1fr;
     }
-    :global(.greenc) {
-        color: var(--green);
-    }
-    :global(.red) {
-        color: red;
-    }
-    :global(.active) {
-        background-color: var(--blue);
-        color: #fff;
-    }
+   
+   
     .btn-wrapper > div {
         padding: 0.2rem 0.5rem;
         background-color: transparent;

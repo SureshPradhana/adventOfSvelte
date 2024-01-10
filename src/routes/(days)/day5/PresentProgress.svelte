@@ -389,7 +389,7 @@
         align-items: center;
     }
     .boxgrid > div {
-        border: 1px solid #444444;
+        border: 1px solid var(--stroke);
     }
     .boxgrid > div > p {
         font-size: 0.8rem;
@@ -405,10 +405,10 @@
         text-align: center;
     }
     .child:nth-child(1) {
-        border-top: 1px solid #444444;
+        border-top: 1px solid var(--stroke);
     }
     .child {
-        border-left: 1px solid #444444;
+        border-left: 1px solid var(--stroke);
     }
     h2,
     .child-wrapper {
@@ -419,7 +419,7 @@
     }
 
     .child-wrapper > div {
-        border: 1px solid #444444;
+        border: 1px solid var(--stroke);
         grid-template-columns: 1fr 1fr;
     }
     .child-wrapper > div > p {
